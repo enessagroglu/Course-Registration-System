@@ -12,5 +12,5 @@ public abstract class Person {
 
     abstract String getPassword();
 
-
+    abstract Boolean login(String userId, String password);
 }
