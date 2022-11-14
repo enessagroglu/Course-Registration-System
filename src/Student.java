@@ -77,5 +77,7 @@ public class Student extends Person{
 
     public void setSchedule(Schedule schedule) {
         this.schedule = schedule;
+
+
     }
 }
