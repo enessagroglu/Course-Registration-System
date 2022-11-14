@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.List;
 
 public class Student extends Person{
     private StudentID studentid;
@@ -6,14 +7,21 @@ public class Student extends Person{
     private Advisor advisor;
     private Transcript transcript;
     private List<Course> selectedCourses = new ArrayList<Course>();
-    private List<Course> selectedSessions = new ArrayList<Course>();
+    private List<CourseSession> selectedSessions = new ArrayList<CourseSession>();
     private int entryYear;
     private Schedule schedule;
 
-    public Student(){
-
+    public Student(StudentID studentid, Semester semester, Advisor advisor, Transcript transcript, List<Course> selectedCourses,
+                   List<CourseSession> selectedSessions, int entryYear, Schedule schedule) {
+        this.studentid = studentid;
+        this.semester = semester;
+        this.advisor = advisor;
+        this.transcript = transcript;
+        this.selectedCourses = selectedCourses;
+        this.selectedSessions = selectedSessions;
+        this.entryYear = entryYear;
+        this.schedule = schedule;
     }
-
 
     public StudentID getStudentid() {
         return studentid;
@@ -55,11 +63,11 @@ public class Student extends Person{
         this.selectedCourses = selectedCourses;
     }
 
-    public List<Course> getSelectedSessions() {
+    public List<CourseSession> getSelectedSessions() {
         return selectedSessions;
     }
 
-    public void setSelectedSessions(List<Course> selectedSessions) {
+    public void setSelectedSessions(List<CourseSession> selectedSessions) {
         this.selectedSessions = selectedSessions;
     }
 
@@ -77,7 +85,45 @@ public class Student extends Person{
 
     public void setSchedule(Schedule schedule) {
         this.schedule = schedule;
-
-
     }
+
+    public boolean login(StudentID studentID, String password){
+        this.studentid=studentID;
+        this.password=password;
+        return login;
+    }
+
+    public void EnrollCourse(List<Course> allCourses, List<Course> teAllCourses, List<Course> fteCourses, List<Course> nteCourses){
+        this.allCourses=allCourses;
+        this.allCourses=teAllCourses;
+        this.allCourses=fteCourses;
+        this.allCourses=nteCourses;
+    }
+
+    public List<Course> sendToApproval(List<Course> selectedCourses, List<CourseSession> selectedSessions){
+        this.selectedCourses=selectedCourses;
+        this.selectedSessions=selectedSessions;
+        return sendToApproval;
+    }
+
+    public Schedule addSchedule(List<Course> selectedCourses){
+        this.selectedSessions=selectedSessions;
+        return addSchedule;
+    }
+
+    @Override
+    public String getFullName() {
+        return null;
+    }
+
+    @Override
+    public String getEmail() {
+        return null;
+    }
+
+    @Override
+    public String getPassword() {
+        return null;
+    }
+
 }
