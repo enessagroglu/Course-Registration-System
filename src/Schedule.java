@@ -1,8 +1,8 @@
 public class Schedule {
     private boolean status;
-    private SemesterName semesterName;
+    private String semesterName;
 
-    public Schedule(boolean status, SemesterName semesterName){
+    public Schedule(boolean status, String semesterName){
         this.status = status;
         this.semesterName = semesterName;
     }
@@ -15,13 +15,7 @@ public class Schedule {
         this.status = status;
     }
 
-    public SemesterName getSemesterName() {
-        return semesterName;
-    }
 
-    public void setSemesterName(SemesterName semesterName) {
-        this.semesterName = semesterName;
-    }
 
     public void createSchedule(List <Course> selectedCourses){}
 
