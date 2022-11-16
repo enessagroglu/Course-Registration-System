@@ -3,18 +3,16 @@ import java.util.List;
 import java.util.Random;
 
 public class Student extends Person{
-    private String studentId;
     private Semester semester;
     private Advisor advisor;
     private Transcript transcript;
-  //  private List<Course> selectedCourses = new ArrayList<Course>();
-    private List<CourseSession> selectedSessions = new ArrayList<CourseSession>();
+    private ArrayList<Course> selectedCourses = new ArrayList<Course>();
+    private ArrayList<CourseSession> selectedSessions = new ArrayList<CourseSession>();
     private String entryYear;
     private Schedule schedule;
 
-   public Student(String studentId, Semester semester, Advisor advisor, Transcript transcript, List<Course> selectedCourses,
-                   List<CourseSession> selectedSessions, String entryYear, Schedule schedule) {
-        this.studentId = createID(entryYear);;
+   public Student(String studentId, Semester semester, Advisor advisor, Transcript transcript, ArrayList<Course> selectedCourses,
+                   ArrayList<CourseSession> selectedSessions, String entryYear, Schedule schedule) {
         this.semester = semester;
         this.advisor = advisor;
         this.transcript = transcript;
@@ -23,20 +21,8 @@ public class Student extends Person{
         this.entryYear = entryYear;
         this.schedule = schedule;
     }
-    public Student(String entryYear){
-        this.entryYear = entryYear;
-
-    }
 
 
-
-    public String getStudentId() {
-        return createID(entryYear);
-    }
-
-    public void setStudentId(String studentId) {
-        this.studentId = studentId;
-    }
 
     public Semester getSemester() {
         return semester;
@@ -62,11 +48,11 @@ public class Student extends Person{
         this.transcript = transcript;
     }
 
-    public List<Course> getSelectedCourses() {
+    public ArrayList<Course> getSelectedCourses() {
         return selectedCourses;
     }
 
-    public void setSelectedCourses(List<Course> selectedCourses) {
+    public void setSelectedCourses(ArrayList<Course> selectedCourses) {
         this.selectedCourses = selectedCourses;
     }
 
@@ -74,7 +60,7 @@ public class Student extends Person{
         return selectedSessions;
     }
 
-    public void setSelectedSessions(List<CourseSession> selectedSessions) {
+    public void setSelectedSessions(ArrayList<CourseSession> selectedSessions) {
         this.selectedSessions = selectedSessions;
     }
 
@@ -94,26 +80,23 @@ public class Student extends Person{
         this.schedule = schedule;
     }
 
- public boolean login(StudentID studentID, String password){
-        this.studentid=studentID;
-        this.password=password;
-        return login;
-    }
 
-    public void EnrollCourse(List<Course> allCourses, List<Course> teAllCourses, List<Course> fteCourses, List<Course> nteCourses){
+
+    public void EnrollCourse(ArrayList<Course> allCourses, ArrayList<Course> TECourses, ArrayList<Course> FTECourses, ArrayList<Course> NTECourses){
         this.allCourses=allCourses;
-        this.allCourses=teAllCourses;
-        this.allCourses=fteCourses;
-        this.allCourses=nteCourses;
+        this.TECourses=TECourses;
+        this.FTECourses=FTECourses;
+        this.NTECourses=NTECourses;
+        return EnrollCourse;
     }
 
-    public List<Course> sendToApproval(List<Course> selectedCourses, List<CourseSession> selectedSessions){
+    public ArrayList<Course> sendToApproval(ArrayList<Course> selectedCourses, ArrayList<CourseSession> selectedSessions){
         this.selectedCourses=selectedCourses;
         this.selectedSessions=selectedSessions;
         return sendToApproval;
     }
 
-    public Schedule addSchedule(List<Course> selectedCourses){
+    public Schedule addSchedule(ArrayList<Course> selectedCourses){
         this.selectedSessions=selectedSessions;
         return addSchedule;
     }
@@ -137,6 +120,8 @@ public class Student extends Person{
     Boolean login(String userId, String password) {
         return null;
     }
+
+
     public static String createID(String studentEntryYear){
 
 
