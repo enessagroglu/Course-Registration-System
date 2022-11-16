@@ -1,19 +1,20 @@
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class Student extends Person{
-    private StudentID studentid;
+    private String studentId;
     private Semester semester;
     private Advisor advisor;
     private Transcript transcript;
-    private List<Course> selectedCourses = new ArrayList<Course>();
+  //  private List<Course> selectedCourses = new ArrayList<Course>();
     private List<CourseSession> selectedSessions = new ArrayList<CourseSession>();
-    private int entryYear;
+    private String entryYear;
     private Schedule schedule;
 
-    public Student(StudentID studentid, Semester semester, Advisor advisor, Transcript transcript, List<Course> selectedCourses,
-                   List<CourseSession> selectedSessions, int entryYear, Schedule schedule) {
-        this.studentid = studentid;
+   public Student(String studentId, Semester semester, Advisor advisor, Transcript transcript, List<Course> selectedCourses,
+                   List<CourseSession> selectedSessions, String entryYear, Schedule schedule) {
+        this.studentId = createID(entryYear);;
         this.semester = semester;
         this.advisor = advisor;
         this.transcript = transcript;
@@ -22,13 +23,19 @@ public class Student extends Person{
         this.entryYear = entryYear;
         this.schedule = schedule;
     }
+    public Student(String entryYear){
+        this.entryYear = entryYear;
 
-    public StudentID getStudentid() {
-        return studentid;
     }
 
-    public void setStudentid(StudentID studentid) {
-        this.studentid = studentid;
+
+
+    public String getStudentId() {
+        return createID(entryYear);
+    }
+
+    public void setStudentId(String studentId) {
+        this.studentId = studentId;
     }
 
     public Semester getSemester() {
@@ -71,11 +78,11 @@ public class Student extends Person{
         this.selectedSessions = selectedSessions;
     }
 
-    public int getEntryYear() {
+    public String getEntryYear() {
         return entryYear;
     }
 
-    public void setEntryYear(int entryYear) {
+    public void setEntryYear(String entryYear) {
         this.entryYear = entryYear;
     }
 
@@ -87,7 +94,7 @@ public class Student extends Person{
         this.schedule = schedule;
     }
 
-    public boolean login(StudentID studentID, String password){
+ public boolean login(StudentID studentID, String password){
         this.studentid=studentID;
         this.password=password;
         return login;
@@ -125,5 +132,20 @@ public class Student extends Person{
     public String getPassword() {
         return null;
     }
+
+    @Override
+    Boolean login(String userId, String password) {
+        return null;
+    }
+    public static String createID(String studentEntryYear){
+
+
+
+        Random random = new Random();
+
+
+        return "1501" + studentEntryYear.substring(2,4) + Integer.toString(random.nextInt(999 - 1) + 1);
+    }
+
 
 }

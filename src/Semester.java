@@ -1,13 +1,15 @@
+import java.util.Random;
+
 public class Semester {
-    private SemesterName semesterName;
+    private String semesterName;
     private int semesterNo;
 
-    public SemesterName getSemesterName() {
-        return semesterName;
+    public String getSemesterName() {
+        return defineSemesterName(getSemesterNo());
     }
 
     public int getSemesterNo() {
-        return semesterNo;
+        return semesterNoGenerate();
     }
     public boolean equals(Semester obj) {
         return semesterNo == obj.semesterNo;
@@ -23,6 +25,18 @@ public class Semester {
 
     public String toString() {
         return "";
+    }
+    public int semesterNoGenerate(){
+        Random random=new Random();
+        return random.nextInt(8-1)+1;
+    }
+    public String defineSemesterName(int semesterNo){
+        if(semesterNo%2 == 0)
+            semesterName = "SPRING";
+        else
+            semesterName = "FALL";
+        return semesterName;
+
     }
 }
 
