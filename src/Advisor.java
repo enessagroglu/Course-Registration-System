@@ -8,10 +8,10 @@ public class Advisor extends Person {
         this.advisorID = advisorID;
     }
 
-    @Override
+   /* @Override
     String getFullName() {
         return null;
-    }
+    }*/
 
     @Override
     String getEmail() {
@@ -36,7 +36,7 @@ public class Advisor extends Person {
         this.advisorID = advisorID;
     }
 
-  public Boolean approveCourseList(ArrayList<Course> selectedCourses, ArrayList<int> selectedSessions, Student student){
+    public Boolean approveCourseList(ArrayList<Course> selectedCourses, ArrayList<CourseSession> selectedSessions, Student student){
         return null;
     }
 

@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-
 public class Transcript {
    private ArrayList<Course> passedCourses;
    private ArrayList<Course> failedCourses;
