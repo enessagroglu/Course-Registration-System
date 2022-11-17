@@ -1,35 +1,59 @@
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
 public class Student extends Person{
-    private Semester semester;
+    private String name;
+    private String studentId;
+    private int semester;
     private Advisor advisor;
     private Transcript transcript;
-    private ArrayList<Course> selectedCourses = new ArrayList<Course>();
-    private ArrayList<CourseSession> selectedSessions = new ArrayList<CourseSession>();
+    private List<Course> selectedCourses = new ArrayList<Course>();
+    private List<CourseSession> selectedSessions = new ArrayList<CourseSession>();
     private String entryYear;
     private Schedule schedule;
+    private ArrayList<String> allCourses;
 
-   public Student(String studentId, Semester semester, Advisor advisor, Transcript transcript, ArrayList<Course> selectedCourses,
-                   ArrayList<CourseSession> selectedSessions, String entryYear, Schedule schedule) {
-        this.semester = semester;
+    /*public Student(String studentId, Semester semester, String name, Advisor advisor, Transcript transcript, List<Course> selectedCourses,
+                   List<CourseSession> selectedSessions, String entryYear, Schedule schedule) {
+        this.name = name;
+        this.studentId = createID(entryYear);;
+        this.semester = Semester.semesterNoGenerate();
         this.advisor = advisor;
         this.transcript = transcript;
         this.selectedCourses = selectedCourses;
         this.selectedSessions = selectedSessions;
         this.entryYear = entryYear;
         this.schedule = schedule;
+    }*/
+    public ArrayList<String> Student(String entryYear){
+        this.entryYear = entryYear;
+        this.name = Person.getFullName();
+        this.semester = getSemester();
+        ArrayList<String> studentInfo = new ArrayList<String>();;
+        studentInfo.add(name);
+        studentInfo.add(entryYear);
+        studentInfo.add(String.valueOf(semester));
+        return studentInfo;
     }
 
 
 
-    public Semester getSemester() {
-        return semester;
+    public String getStudentId() {
+        return createID(entryYear);
     }
 
-    public void setSemester(Semester semester) {
-        this.semester = semester;
+    public void setStudentId(String studentId) {
+        this.studentId = studentId;
+    }
+
+    public int getSemester() {
+        return Semester.semesterNoGenerate();
+    }
+
+    public void setSemester(int semester) {
+        this.semester = Semester.semesterNo;
     }
 
     public Advisor getAdvisor() {
@@ -48,11 +72,11 @@ public class Student extends Person{
         this.transcript = transcript;
     }
 
-    public ArrayList<Course> getSelectedCourses() {
+    public List<Course> getSelectedCourses() {
         return selectedCourses;
     }
 
-    public void setSelectedCourses(ArrayList<Course> selectedCourses) {
+    public void setSelectedCourses(List<Course> selectedCourses) {
         this.selectedCourses = selectedCourses;
     }
 
@@ -60,7 +84,7 @@ public class Student extends Person{
         return selectedSessions;
     }
 
-    public void setSelectedSessions(ArrayList<CourseSession> selectedSessions) {
+    public void setSelectedSessions(List<CourseSession> selectedSessions) {
         this.selectedSessions = selectedSessions;
     }
 
@@ -80,31 +104,34 @@ public class Student extends Person{
         this.schedule = schedule;
     }
 
-
-
-    public void EnrollCourse(ArrayList<Course> allCourses, ArrayList<Course> TECourses, ArrayList<Course> FTECourses, ArrayList<Course> NTECourses){
-        this.allCourses=allCourses;
-        this.TECourses=TECourses;
-        this.FTECourses=FTECourses;
-        this.NTECourses=NTECourses;
-        return EnrollCourse;
+    /* public boolean login(Person name, String password){
+         this.name=name;
+         this.password=password;
+         return login(a,55);
+     }
+ */
+    public void EnrollCourse(List<Course> allCourses, List<Course> teAllCourses, List<Course> fteCourses, List<Course> nteCourses){
+        this.allCourses=Course.allCourses;
+        this.allCourses=Course.teAllCourses;
+        this.allCourses=Course.fteCourses;
+        this.allCourses=Course.nteCourses;
     }
 
-    public ArrayList<Course> sendToApproval(ArrayList<Course> selectedCourses, ArrayList<CourseSession> selectedSessions){
+    public List<Course> sendToApproval(List<Course> selectedCourses, List<CourseSession> selectedSessions){
         this.selectedCourses=selectedCourses;
         this.selectedSessions=selectedSessions;
-        return sendToApproval;
+        return sendToApproval(selectedCourses,selectedSessions);
     }
 
-    public Schedule addSchedule(ArrayList<Course> selectedCourses){
+    public Schedule addSchedule(List<Course> selectedCourses){
         this.selectedSessions=selectedSessions;
-        return addSchedule;
+        return addSchedule(selectedCourses);
     }
 
-    @Override
+    /*@Override
     public String getFullName() {
         return null;
-    }
+    }*/
 
     @Override
     public String getEmail() {
@@ -120,8 +147,6 @@ public class Student extends Person{
     Boolean login(String userId, String password) {
         return null;
     }
-
-
     public static String createID(String studentEntryYear){
 
 

@@ -4,13 +4,13 @@ public enum CourseType {
     TE("TE"),
     FTE("FTE"),
     LAB("LAB"),
-    MANDATORY("MANDATORY");
+    MANDATORY("Mandatory");
     private String name;
 
     CourseType(String name) {
         this.name = name;
-       }
-       public String toString(){
+    }
+    public String toString(){
         return name;
     }
     public CourseType getCourseType(String type){
@@ -26,8 +26,7 @@ public enum CourseType {
             case "FTE":
                 return CourseType.FTE;
             default:
-               return CourseType.MANDATORY;
+                return CourseType.MANDATORY;
         }
     }
 }
-

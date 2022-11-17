@@ -1,3 +1,5 @@
+import java.util.List;
+
 public class Schedule {
     private boolean status;
     private String semesterName;
@@ -17,11 +19,10 @@ public class Schedule {
 
 
 
-    public void createSchedule(List <Course> selectedCourses){}
+    public void createSchedule(List<Course> selectedCourses){}
 
 
 
 
 }
-
 

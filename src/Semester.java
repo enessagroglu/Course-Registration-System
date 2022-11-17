@@ -1,8 +1,8 @@
 import java.util.Random;
 
 public class Semester {
+    public static int semesterNo;
     private String semesterName;
-    private int semesterNo;
 
     public String getSemesterName() {
         return defineSemesterName(getSemesterNo());
@@ -11,9 +11,7 @@ public class Semester {
     public int getSemesterNo() {
         return semesterNoGenerate();
     }
-    public boolean equals(Semester obj) {
-        return semesterNo == obj.semesterNo;
-    }
+
 
     private void setSemesterName() {
         return;
@@ -26,9 +24,10 @@ public class Semester {
     public String toString() {
         return "";
     }
-    public int semesterNoGenerate(){
+    public static int semesterNoGenerate(){
         Random random=new Random();
-        return random.nextInt(8-1)+1;
+        semesterNo=random.nextInt(8-1)+1;
+        return semesterNo;
     }
     public String defineSemesterName(int semesterNo){
         if(semesterNo%2 == 0)
@@ -39,4 +38,3 @@ public class Semester {
 
     }
 }
-
