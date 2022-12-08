@@ -1,45 +1,54 @@
 import java.util.ArrayList;
 
-public class CourseSession {
-    private ArrayList<String> startHour = new ArrayList<String>();
-    private int sessionId;
-    private int courseQouta;
-    private int courseCurrentStudentNumber;
+public class CourseSession extends Course{
+    // Attributes
+    private ArrayList<String> startHour;
+    private int sessionID;
+    private int courseQuota;
+    private int sessionCurrentStudentNumber;
 
-    public CourseSession(ArrayList<String> startHour, int sessionId, int courseQouta, int courseCurrentStudentNumber) {
+    // Constructor
+    public CourseSession(ArrayList<String> startHour, int sessionID, int courseQuota, int sessionCurrentStudentNumber) {
         this.startHour = startHour;
-        this.sessionId = sessionId;
-        this.courseQouta = courseQouta;
-        this.courseCurrentStudentNumber = courseCurrentStudentNumber;
+        this.sessionID = sessionID;
+        this.courseQuota = courseQuota;
+        this.sessionCurrentStudentNumber = sessionCurrentStudentNumber;
     }
 
-    public int getCourseCurrentStudentNumber() {
-        return courseCurrentStudentNumber;
-    }
-
-    public void setCourseCurrentStudentNumber(int courseCurrentStudentNumber) {
-        this.courseCurrentStudentNumber = courseCurrentStudentNumber;
-    }
-
-    public int getSessionId() {
-        return sessionId;
-    }
-
-    public void setSessionId(int sessionId) {
-        this.sessionId = sessionId;
-    }
-
+    // Getter and setter methods
     public ArrayList<String> getStartHour() {
-        return startHour;
+        return this.startHour;
     }
 
     public void setStartHour(ArrayList<String> startHour) {
         this.startHour = startHour;
     }
 
-    public void incrementEnrolledStudentAmount(){
-        this.courseCurrentStudentNumber += 1;
+    public int getSessionID() {
+        return this.sessionID;
     }
 
+    public void setSessionID(int sessionID) {
+        this.sessionID = sessionID;
+    }
 
+    public int getCourseQuota() {
+        return this.courseQuota;
+    }
+
+    public void setCourseQuota(int courseQuota) {
+        this.courseQuota = courseQuota;
+    }
+
+    public int getSessionCurrentStudentNumber() {
+        return this.sessionCurrentStudentNumber;
+    }
+
+    public void setSessionCurrentStudentNumber(int sessionCurrentStudentNumber) {
+        this.sessionCurrentStudentNumber = sessionCurrentStudentNumber;
+    }
+
+    public void incrementEnrolledStudentAmount(){
+        setSessionCurrentStudentNumber(this.sessionCurrentStudentNumber+1);
+    }
 }
