@@ -1,4 +1,4 @@
-public class CourseCode {
+public class CourseCode extends Course{
     // Attributes
     private String departmentCode;
     private String courseID;
