@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 
-public class CourseSession extends Course{
+public class CourseSession{
     // Attributes
     private ArrayList<String> startHour;
     private int sessionID;
