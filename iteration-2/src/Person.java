@@ -1,41 +1,34 @@
-import java.io.File;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.util.List;
-import java.util.Random;
-
 public abstract class Person {
-    private String fullName;
+    private String name;
+    private String surname;
     private String email;
     private String password;
 
-    protected Person() {
+    // constructor
+    public Person(String name, String surname, String email, String password) {
+        this.name = name;
+        this.surname = surname;
+        this.email = email;
+        this.password = password;
     }
 
-    static String getFullName() {
-        String path = new File("").getAbsolutePath() + "/src/names.json";
-        List<String> lines;
-        try {
-            lines = Files.readAllLines(Paths.get(path));
-        } catch (IOException e) {
-            e.printStackTrace();
-            return null;
-        }
-        Random random = new Random();
-        String name = lines.get(random.nextInt(lines.size()));
-        String mail;
-        name=name.substring(5, name.length() - 2);
-        return name;
-    }
+    // getter and setter methods
+    public String getName() {return this.name;}
 
-//public abstract String getFullName();
+    public void setName(String name) {this.name = name;}
 
-    //public abstract String getFullName(){};
+    public String getSurname() {return this.surname;}
 
-    abstract String getEmail();
+    public void setSurname(String surname) {this.surname = surname;}
 
-    abstract String getPassword();
+    public String getEmail() {return this.email;}
 
-    abstract Boolean login(String userId, String password);
+    public void setEmail(String email) {this.email = email;}
+
+    public String getPassword() {return this.password;}
+
+    public void setPassword(String password) {this.password = password;}
+
+    // login abstract method
+    public abstract boolean login(String email, String password);
 }
