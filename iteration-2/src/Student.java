@@ -1,161 +1,167 @@
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
 
-public class Student extends Person{
-    private String name;
-    private String studentId;
-    private int semester;
+public class Student extends Person {
+    private String studentID;
+    private Semester semester;
     private Advisor advisor;
     private Transcript transcript;
-    private List<Course> selectedCourses = new ArrayList<Course>();
-    private List<CourseSession> selectedSessions = new ArrayList<CourseSession>();
-    private String entryYear;
+    private ArrayList<Course> selectedCourses;
+    private CourseSession selectedSessions;
+    private int entryYear;
     private Schedule schedule;
-    private ArrayList<String> allCourses;
+    private float gpa;
+    private float cgpa;
+    private int completedCredit;
+    private List<Course> activeCourses;
+    private List<Course> pastCourses;
+    private List<Course> nonTakenCourses;
+    private List<Course> failedCourses;
 
-    /*public Student(String studentId, Semester semester, String name, Advisor advisor, Transcript transcript, List<Course> selectedCourses,
-                   List<CourseSession> selectedSessions, String entryYear, Schedule schedule) {
-        this.name = name;
-        this.studentId = createID(entryYear);;
-        this.semester = Semester.semesterNoGenerate();
+    public Student(String studentID, Semester semester, Advisor advisor, Transcript transcript, ArrayList<Course> selectedCourses,
+                   CourseSession selectedSessions, int entryYear, Schedule schedule, float gpa, float cgpa, int completedCredit,
+                   List<Course> activeCourses, List<Course> pastCourses, List<Course> nonTakenCourses, List<Course> failedCourses) {
+        this.studentID = studentID;
+        this.semester = semester;
         this.advisor = advisor;
         this.transcript = transcript;
         this.selectedCourses = selectedCourses;
         this.selectedSessions = selectedSessions;
         this.entryYear = entryYear;
         this.schedule = schedule;
+        this.gpa = gpa;
+        this.cgpa = cgpa;
+        this.completedCredit = completedCredit;
+        this.activeCourses = activeCourses;
+        this.pastCourses = pastCourses;
+        this.nonTakenCourses = nonTakenCourses;
+        this.failedCourses = failedCourses;
+    }
+
+    // getter and setter methods
+    public String getStudentID() {return this.studentID;}
+    public void setStudentID(String studentID) {this.studentID = studentID;}
+
+    public Semester getSemester() {return this.semester;}
+
+    public void setSemester(Semester semester) {this.semester = semester;}
+
+    public Advisor getAdvisor() {return this.advisor;}
+
+    public void setAdvisor(Advisor advisor) {this.advisor = advisor;}
+
+    public Transcript getTranscript() {return this.transcript;}
+
+    public void setTranscript(Transcript transcript) {this.transcript = transcript;}
+
+    public ArrayList<Course> getSelectedCourses() {return this.selectedCourses;}
+
+    public void setSelectedCourses(ArrayList<Course> selectedCourses) {this.selectedCourses = selectedCourses;}
+
+    public CourseSession getSelectedSessions() {return this.selectedSessions;}
+
+    public void setSelectedSessions(CourseSession selectedSessions) {this.selectedSessions = selectedSessions;}
+
+    public int getEntryYear() {return this.entryYear;}
+
+    public void setEntryYear(int entryYear) {this.entryYear = entryYear;}
+
+    public Schedule getSchedule() {return this.schedule;}
+
+    public void setSchedule(Schedule schedule) {this.schedule = schedule;}
+
+    public float getGpa() {return gpa;}
+
+    public void setGpa(float gpa) {this.gpa = gpa;}
+
+    public float getCgpa() {return cgpa;}
+
+    public void setCgpa(float cgpa) {this.cgpa = cgpa;}
+
+    public int getCompletedCredit() {return completedCredit;}
+
+    public void setCompletedCredit(int completedCredit) {this.completedCredit = completedCredit;}
+
+    public List<Course> getActiveCourses() {return activeCourses;}
+
+    public void setActiveCourses(List<Course> activeCourses) {this.activeCourses = activeCourses;}
+
+    public List<Course> getPastCourses() {return pastCourses;}
+
+    public void setPastCourses(List<Course> pastCourses) {this.pastCourses = pastCourses;}
+
+    public List<Course> getNonTakenCourses() {return nonTakenCourses;}
+
+    public void setNonTakenCourses(List<Course> nonTakenCourses) {this.nonTakenCourses = nonTakenCourses;}
+
+    public List<Course> getFailedCourses() {return failedCourses;}
+
+    public void setFailedCourses(List<Course> failedCourses) {this.failedCourses = failedCourses;}
+
+    public void calculateGpa(){
+        int credit = transcript.getCredit();
+        int grade = transcript.getGrade();
+        int result = grade/credit;
+        setGpa((float) result);
+    }
+
+    public void calculateCumulativeGpa(){
+        int cCredit = transcript.getCumulativeCredit();
+        int cGrade = transcript.getCumulativeGrade();
+        int result = cGrade/cCredit;
+        setCgpa((float) result);
+    }
+
+    public void printActiveCourses(){
+        int i = 0;
+        System.out.println(getName()+' '+getSurname());
+        while (i < activeCourses.size()) {
+            Course course = activeCourses.get(i);
+            System.out.println(course.getName());
+            i++;
+        }
+    }
+
+    /*
+    @Override// must be revised after controller part
+    public boolean login(String studentID, String password) {
+        // check if the provided email and password match the ones
+        // stored in this Student object
+        if (email.equals(this.getEmail()) && password.equals(this.getPassword())) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public Course enrollCourse(Arraylist<String> selectedCourseIDs, Arraylist<Course> coursesfForSemester){
+        boolean status;
+        Arraylist<Course> avaliableSelectedCourses;
+
+        for(String s: selectedCourseIDs){
+            for(int i = 0; i++; i<coursesfForSemester.size){
+                if(s.equalsIgnoreCase(coursesfForSemester.get(i).getCourseCode().courseID)){
+                    status = true;
+                    avaliableSelectedCourses.add(coursesfForSemester.get(i));
+                }
+                else{
+                    status = false;
+                }
+            }
+        }
+        if(status == true){
+            setSelectedCourses(avaliableSelectedCourses);
+
+        }
+        else{
+            System.out.println("Entered Wrong Course ID...");
+        }
+        return avaliableSelectedCourses;
+    }
+
+    public  sendToApproval(Schedule schedule, Arraylist<Course> courses){
+        //checkPrequisite();
+        //checkTotalCredits();
     }*/
-    public ArrayList<String> Student(String entryYear){
-        this.entryYear = entryYear;
-        this.name = Person.getFullName();
-        this.semester = getSemester();
-        ArrayList<String> studentInfo = new ArrayList<String>();;
-        studentInfo.add(name);
-        studentInfo.add(entryYear);
-        studentInfo.add(String.valueOf(semester));
-        return studentInfo;
-    }
-
-
-
-    public String getStudentId() {
-        return createID(entryYear);
-    }
-
-    public void setStudentId(String studentId) {
-        this.studentId = studentId;
-    }
-
-    public int getSemester() {
-        return Semester.semesterNoGenerate();
-    }
-
-    public void setSemester(int semester) {
-        this.semester = Semester.semesterNo;
-    }
-
-    public Advisor getAdvisor() {
-        return advisor;
-    }
-
-    public void setAdvisor(Advisor advisor) {
-        this.advisor = advisor;
-    }
-
-    public Transcript getTranscript() {
-        return transcript;
-    }
-
-    public void setTranscript(Transcript transcript) {
-        this.transcript = transcript;
-    }
-
-    public List<Course> getSelectedCourses() {
-        return selectedCourses;
-    }
-
-    public void setSelectedCourses(List<Course> selectedCourses) {
-        this.selectedCourses = selectedCourses;
-    }
-
-    public List<CourseSession> getSelectedSessions() {
-        return selectedSessions;
-    }
-
-    public void setSelectedSessions(List<CourseSession> selectedSessions) {
-        this.selectedSessions = selectedSessions;
-    }
-
-    public String getEntryYear() {
-        return entryYear;
-    }
-
-    public void setEntryYear(String entryYear) {
-        this.entryYear = entryYear;
-    }
-
-    public Schedule getSchedule() {
-        return schedule;
-    }
-
-    public void setSchedule(Schedule schedule) {
-        this.schedule = schedule;
-    }
-
-    /* public boolean login(Person name, String password){
-         this.name=name;
-         this.password=password;
-         return login(a,55);
-     }
- */
-    public void EnrollCourse(List<Course> allCourses, List<Course> teAllCourses, List<Course> fteCourses, List<Course> nteCourses){
-        this.allCourses=Course.allCourses;
-        this.allCourses=Course.teAllCourses;
-        this.allCourses=Course.fteCourses;
-        this.allCourses=Course.nteCourses;
-    }
-
-    public List<Course> sendToApproval(List<Course> selectedCourses, List<CourseSession> selectedSessions){
-        this.selectedCourses=selectedCourses;
-        this.selectedSessions=selectedSessions;
-        return sendToApproval(selectedCourses,selectedSessions);
-    }
-
-    public Schedule addSchedule(List<Course> selectedCourses){
-        this.selectedSessions=selectedSessions;
-        return addSchedule(selectedCourses);
-    }
-
-    /*@Override
-    public String getFullName() {
-        return null;
-    }*/
-
-    @Override
-    public String getEmail() {
-        return null;
-    }
-
-    @Override
-    public String getPassword() {
-        return null;
-    }
-
-    @Override
-    Boolean login(String userId, String password) {
-        return null;
-    }
-    public static String createID(String studentEntryYear){
-
-
-
-        Random random = new Random();
-
-
-        return "1501" + studentEntryYear.substring(2,4) + Integer.toString(random.nextInt(999 - 1) + 1);
-    }
 
 
 }
