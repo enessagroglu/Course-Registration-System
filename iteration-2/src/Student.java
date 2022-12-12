@@ -16,10 +16,12 @@ public class Student extends Person {
     private List<Course> pastCourses;
     private List<Course> nonTakenCourses;
     private List<Course> failedCourses;
+    private Map<Course, Grade> hashMapGrade = new HashMap<>();
 
     public Student(String studentID, Semester semester, Advisor advisor, Transcript transcript, ArrayList<Course> selectedCourses,
                    CourseSession selectedSessions, int entryYear, Schedule schedule, float gpa, float cgpa, int completedCredit,
-                   List<Course> activeCourses, List<Course> pastCourses, List<Course> nonTakenCourses, List<Course> failedCourses) {
+                   List<Course> activeCourses, List<Course> pastCourses, List<Course> nonTakenCourses, List<Course> failedCourses,
+                   Map<Course, Grade> hashMapGrade) {
         this.studentID = studentID;
         this.semester = semester;
         this.advisor = advisor;
@@ -35,6 +37,15 @@ public class Student extends Person {
         this.pastCourses = pastCourses;
         this.nonTakenCourses = nonTakenCourses;
         this.failedCourses = failedCourses;
+        this.hashMapGrade = hashMapGrade;
+    }
+
+    public Map<Course, Grade> getHashMapGrade() {
+        return hashMapGrade;
+    }
+
+    public void setHashMapGrade(Map<Course, Grade> hashMapGrade) {
+        this.hashMapGrade = hashMapGrade;
     }
 
     // getter and setter methods
