@@ -131,6 +131,12 @@ public class Student extends Person {
             i++;
         }
     }
+    @Override
+    public String toString() {
+        return "Student{" +
+                "advisor=" + advisor +
+                "} " + super.toString();
+    }
 
     /*
     @Override// must be revised after controller part
