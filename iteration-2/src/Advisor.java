@@ -40,7 +40,7 @@ public class Advisor extends Person {
         return null;
     }
 
-    public Boolean checkCourseQuota(CourseSession selectedSession, Student student, Course course){
+    public Boolean checkCourseQuota(CourseSession selectedSession, Student student, Course course) {
         return null;
     }
 
