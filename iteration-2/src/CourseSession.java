@@ -1,54 +1,39 @@
-import java.util.ArrayList;
+import java.util.List;
 
-public class CourseSession{
-    // Attributes
-    private ArrayList<String> startHour;
-    private int sessionID;
-    private int courseQuota;
-    private int sessionCurrentStudentNumber;
+public class CourseSession {
+    private int sessionId;
+    private Course course;
+    private List<Schedule> scheduleList;
 
-    // Constructor
-    public CourseSession(ArrayList<String> startHour, int sessionID, int courseQuota, int sessionCurrentStudentNumber) {
-        this.startHour = startHour;
-        this.sessionID = sessionID;
-        this.courseQuota = courseQuota;
-        this.sessionCurrentStudentNumber = sessionCurrentStudentNumber;
+    public CourseSession(int sectionId, Course course, List<Schedule> scheduleList) {
+        this.sessionId = sectionId;
+        this.course = course;
+        this.scheduleList = scheduleList;
     }
 
-    // Getter and setter methods
-    public ArrayList<String> getStartHour() {
-        return this.startHour;
+
+    public int getSessionId() {return sessionId;}
+
+    public void setSessionId(int sessionId) {this.sessionId = sessionId;}
+
+    public Course getCourse() {return course;}
+
+    public void setCourse(Course course) {this.course = course;}
+
+    public List<Schedule> getScheduleList() {return scheduleList;}
+
+    public CourseSession setScheduleList(List<Schedule> scheduleList) {
+        this.scheduleList = scheduleList;
+        return this;
     }
 
-    public void setStartHour(ArrayList<String> startHour) {
-        this.startHour = startHour;
-    }
-
-    public int getSessionID() {
-        return this.sessionID;
-    }
-
-    public void setSessionID(int sessionID) {
-        this.sessionID = sessionID;
-    }
-
-    public int getCourseQuota() {
-        return this.courseQuota;
-    }
-
-    public void setCourseQuota(int courseQuota) {
-        this.courseQuota = courseQuota;
-    }
-
-    public int getSessionCurrentStudentNumber() {
-        return this.sessionCurrentStudentNumber;
-    }
-
-    public void setSessionCurrentStudentNumber(int sessionCurrentStudentNumber) {
-        this.sessionCurrentStudentNumber = sessionCurrentStudentNumber;
-    }
-
-    public void incrementEnrolledStudentAmount(){
-        setSessionCurrentStudentNumber(this.sessionCurrentStudentNumber+1);
+    @Override
+    public String toString() {
+        //This method returns a string representation of the CourseSession object
+        return "CourseSession{" +
+                "sessionId=" + sessionId +
+                ", course=" + course +
+                ", scheduleList=" + scheduleList +
+                '}';
     }
 }
