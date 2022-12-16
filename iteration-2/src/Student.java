@@ -108,6 +108,10 @@ public class Student extends Person {
 
     public void setFailedCourses(List<Course> failedCourses) {this.failedCourses = failedCourses;}
 
+    public void addCourseToSelectedCourses(Course course) {
+        this.selectedCourses.add(course);
+    }
+
     public void calculateGpa(){
         int credit = transcript.getCredit();
         int grade = transcript.getGrade();
@@ -137,48 +141,5 @@ public class Student extends Person {
                 "advisor=" + advisor +
                 "} " + super.toString();
     }
-
-    /*
-    @Override// must be revised after controller part
-    public boolean login(String studentID, String password) {
-        // check if the provided email and password match the ones
-        // stored in this Student object
-        if (email.equals(this.getEmail()) && password.equals(this.getPassword())) {
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    public Course enrollCourse(Arraylist<String> selectedCourseIDs, Arraylist<Course> coursesfForSemester){
-        boolean status;
-        Arraylist<Course> avaliableSelectedCourses;
-
-        for(String s: selectedCourseIDs){
-            for(int i = 0; i++; i<coursesfForSemester.size){
-                if(s.equalsIgnoreCase(coursesfForSemester.get(i).getCourseCode().courseID)){
-                    status = true;
-                    avaliableSelectedCourses.add(coursesfForSemester.get(i));
-                }
-                else{
-                    status = false;
-                }
-            }
-        }
-        if(status == true){
-            setSelectedCourses(avaliableSelectedCourses);
-
-        }
-        else{
-            System.out.println("Entered Wrong Course ID...");
-        }
-        return avaliableSelectedCourses;
-    }
-
-    public  sendToApproval(Schedule schedule, Arraylist<Course> courses){
-        //checkPrequisite();
-        //checkTotalCredits();
-    }*/
-
 
 }
