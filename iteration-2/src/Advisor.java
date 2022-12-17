@@ -15,7 +15,7 @@ public class Advisor extends Person{
 
     public Advisor(int id, String name, String surname, List<String> emails) {
         super(id, name, surname, emails);
-        this.fullName = name + " " + surname;
+        this.Name = name + " " + surname;
     }
 
     public Advisor(int id, String name, String surname) {
