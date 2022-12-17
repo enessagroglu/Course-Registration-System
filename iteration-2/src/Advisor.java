@@ -11,14 +11,14 @@ public class Advisor extends Person{
     private Course course;
     private List<Student> client = new ArrayList<>();
     private List<Course> givenCourses = new ArrayList<>();
-    private Map<String,Instructor> instructorMap;
+    private Map<String,Advisor> hmAdvisor;
 
-    public Instructor(int id, String name, String surname, List<String> emails) {
+    public Advisor(int id, String name, String surname, List<String> emails) {
         super(id, name, surname, emails);
         this.fullName = name + " " + surname;
     }
 
-    public Instructor(int id, String name, String surname) {
+    public Advisor(int id, String name, String surname) {
         super(id, name, surname);
         this.fullName = name + " " + surname;
     }
@@ -73,8 +73,8 @@ public class Advisor extends Person{
         givenCourses.add(course);
     }
 
-    public void addAdvisees(Student student) {
-        advisees.add(student);
+    public void addClient(Student student) {
+        client.add(student);
     }
 
 
@@ -141,16 +141,16 @@ public class Advisor extends Person{
 
 
     public void FTECheck(Student student) {
-        List<Course> basketSelectedCourses = student.getbasketSelectedCourses();
+        List<Course> SelectedCourses = student.getSelectedCourses();
         Course course = null;
-        for (Course src : basketSelectedCourses) {
+        for (Course src : SelectedCourses) {
             if (src instanceof FacultyTechnicalElective) {
                 course = src;
                 break;
             }
         }
         if (course != null) {
-            basketSelectedCourses.remove(course);
+            SelectedCourses.remove(course);
             Error notInGraduationError = new NotInGraduationError(student, course);
             student.addNonTakenCourse(new FacultyTechnicalElective());
             student.addError(notInGraduationError);
@@ -214,17 +214,37 @@ public class Advisor extends Person{
     public Course selectNonTakenCourse(Course course){// check again
         if(course instanceof MandatoryCourse) {
             return course;
-        }else if(course instanceof TechnicalElective){
-            return new TechnicalElective();
-        }else if(course instanceof FacultyTechnicalElective){
-            return new FacultyTechnicalElective();
-        }else if(course instanceof NT_UElective){
-            return new NT_UElective();
+        }else if(course instanceof TeChecker){
+            return new TeChecker();
+        }else if(course instanceof FacultyTechnicalCourse){
+            return new FacultyTechnicalCourse();
+        }else if(course instanceof NT_UCourse){
+            return new NT_UCourse();
         }
         return null;
     }
 
-    //checking collision is not coded
+
+
+
+
+
+    public ApproveSelectedCourses(Student student){
+        String fallOrSpring = student.getSemester().getFallOrSpring();
+        int semesterID = student.getSemester().getSemesterID();
+        if("Fall".equals(fallOrSpring)){
+            TECheck(student);
+        }
+        if(!(semesterID<=7) && "Fall".equals(fallOrSpring)){
+            FTECheck(student);
+        }
+        MinCreditCheck(student);
+        graduationProjectCheck(student);
+        List<Course> selectedCourses = student.getSelectedCourses();
+
+    }
+
+
 
 
 
