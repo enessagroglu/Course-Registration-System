@@ -1,4 +1,4 @@
-public class NT_UCourse extends ElectiveCourse{//NT_UElective class extends from ElectiveCourse class, it created for NT_UE elective courses
+public class NT_UCourse extends ElectiveCourse{
 
     public NT_UCourse() {
         super();

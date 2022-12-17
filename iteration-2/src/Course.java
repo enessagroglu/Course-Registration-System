@@ -64,7 +64,6 @@ public class Course{
         students.add(student);
     }
 
-
     @Override
     public String toString() {
         return "Course{" +
@@ -72,6 +71,21 @@ public class Course{
                 ", name='" + name + '\'' +
                 ", instructor=" + instructor +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Course)) return false;
+
+        Course course = (Course) o;
+
+        return getCourseId().equals(course.getCourseId());
+    }
+
+    @Override
+    public int hashCode() {
+        return getCourseId().hashCode();
     }
 
 
