@@ -73,8 +73,8 @@ public class Advisor extends Person{
         givenCourses.add(course);
     }
 
-    public void addAdvisees(Student student) {
-        advisees.add(student);
+    public void addClient(Student student) {
+        client.add(student);
     }
 
 
