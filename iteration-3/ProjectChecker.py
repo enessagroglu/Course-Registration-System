@@ -1,19 +1,18 @@
 from Checker import Checker
-class QuotaError(Checker):  
+
+class ProjectError(Checker):
     def __init__(self, student, course):
         super().__init__(student)
         self.course = course
 
-    @property
-    def course(self):
+    def get_course(self):
         return self.course
 
-    @course.setter
-    def course(self, course):
+    def set_course(self, course):
         self.course = course
 
     def raise_course(self):
         return self.course
 
     def raise_error(self):
-        return "The student was unable to sign up for {} as a result of a quota issue.".format(self.course.course_id)
+        return "The advisor disapproved  " + self.course.get_course_id() + " since the student earned credits < 165"
