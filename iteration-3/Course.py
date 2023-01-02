@@ -1,7 +1,7 @@
 from typing import List, TypeVar
 from CourseSession import CourseSession
 from Semester import Semester
-from Student import Student
+
 
 Course = TypeVar('Course', bound='Course')
 
@@ -9,7 +9,7 @@ Course = TypeVar('Course', bound='Course')
 class Course:
     def __init__(self, courseId: str, name: str, courseCode: str, requiredCredits: int ,semesterNumber: int, courseType: str,
     courseCurrentStudentNumber: int, semester: Semester, quota: int, credit: int, sessionCount: int ,sessions: List[CourseSession], 
-    prerequisites: List[Course], students: List[Student]):
+    prerequisites: List[Course]):
         self._courseId = courseId
         self._name = name
         self._courseCode = courseCode
@@ -23,7 +23,7 @@ class Course:
         self._sessionCount = sessionCount
         self._sessions = sessions
         self._prerequisites = prerequisites
-        self._students = students
+        
 
     @property
     def courseId(self):
@@ -141,17 +141,7 @@ class Course:
     @prerequisites.setter
     def prerequisites(self, prerequisites):
         self._prerequisites = prerequisites
-    
-    @property
-    def students(self):
-        return self._students
-    
-    @students.setter
-    def students(self, students):
-        self._students = students
-    
-    def add_student(self, student: Student):
-        self._students.append(student)
+   
 
     def __str__(self):
-        return f"Course(course_id='{self._courseId}', name='{self._name}', course_code='{self._courseCode}', required_credits={self._requiredCredits}, semester_number={self._semesterNumber}, course_type='{self._courseType}', course_current_student_number={self._courseCurrentStudentNumber}, semester='{self._semester}', quota={self._quota}, credit={self._credit}, session_count={self._sessionCount}, sessions='{self._sessions}', prerequisites='{self._prerequisites}', students='{self._students}')"
+        return f"Course(course_id='{self._courseId}', name='{self._name}', course_code='{self._courseCode}', required_credits={self._requiredCredits}, semester_number={self._semesterNumber}, course_type='{self._courseType}', course_current_student_number={self._courseCurrentStudentNumber}, semester='{self._semester}', quota={self._quota}, credit={self._credit}, session_count={self._sessionCount}, sessions='{self._sessions}', prerequisites='{self._prerequisites}'')"

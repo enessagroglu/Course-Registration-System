@@ -14,7 +14,7 @@ class CourseController:
 
     def createCourse(self):
         # Load the JSON data from the file
-        with open('courses.json', 'r') as f:
+        with open('Courses.json', 'r') as f:
             data = json.load(f)
 
         # Create a list to store the Course objects
@@ -36,21 +36,21 @@ class CourseController:
             session_count = course_data['courseSessions']
             sessions = ""
             prerequisites = course_data['PrerequisiteCourseCodes']
-            students = 0
+            
     
             # Create a new Course object with the extracted values
             if course_type == "Mandatory":
-                course = MandatoryCourse(course_id, name, course_code, required_credits, semester_number, course_type, course_current_student_number, semester, quota, credit, session_count, sessions, prerequisites, students)
+                course = MandatoryCourse(course_id, name, course_code, required_credits, semester_number, course_type, course_current_student_number, semester, quota, credit, session_count, sessions, prerequisites)
             elif course_type == "NTE":
-                course = NTE_Course(course_id, name, course_code, required_credits, semester_number, course_type, course_current_student_number, semester, quota, credit, session_count, sessions, prerequisites, students)
+                course = NTE_Course(course_id, name, course_code, required_credits, semester_number, course_type, course_current_student_number, semester, quota, credit, session_count, sessions, prerequisites)
             elif course_type == "TE":
-                course = TechnicalCourse(course_id, name, course_code, required_credits, semester_number, course_type, course_current_student_number, semester, quota, credit, session_count, sessions, prerequisites, students)
+                course = TechnicalCourse(course_id, name, course_code, required_credits, semester_number, course_type, course_current_student_number, semester, quota, credit, session_count, sessions, prerequisites)
             elif course_type == "FTE":
-                course = FacultyTechnicalCourse(course_id, name, course_code, required_credits, semester_number, course_type, course_current_student_number, semester, quota, credit, session_count, sessions, prerequisites, students)
+                course = FacultyTechnicalCourse(course_id, name, course_code, required_credits, semester_number, course_type, course_current_student_number, semester, quota, credit, session_count, sessions, prerequisites)
             elif course_type == "Elective":
-                course = ElectiveCourse(course_id, name, course_code, required_credits, semester_number, course_type, course_current_student_number, semester, quota, credit, session_count, sessions, prerequisites, students)
+                course = ElectiveCourse(course_id, name, course_code, required_credits, semester_number, course_type, course_current_student_number, semester, quota, credit, session_count, sessions, prerequisites)
             else:
-                course = Course(course_id, name, course_code, required_credits, semester_number, course_type, course_current_student_number, semester, quota, credit, session_count, sessions, prerequisites, students)
+                course = Course(course_id, name, course_code, required_credits, semester_number, course_type, course_current_student_number, semester, quota, credit, session_count, sessions, prerequisites)
     
             # Add the Course object to the list
             courses.append(course)
