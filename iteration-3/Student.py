@@ -194,5 +194,9 @@ class Student(Person):
         for courseSession in self._selectedSessions:
             print(courseSession)
 
+    def addNonTakenCourse(self,course: Course):
+        if course not in self.nonTakenCourses:
+            self.nonTakenCourses.append(course)
+
     def __str__(self):
         return f"Student(name='{self._name}', surname='{self._surname}', id={self._id}, emails='{self._email}', semester='{self._semester}', advisor='{self._advisor}', transcript='{self._transcript}', selected_courses='{self._selectedCourses}', selected_sessions='{self._selectedSessions}', entry_year={self._entryYear}, schedule='{self._schedule}', gpa={self._gpa}, cgpa={self._cgpa}, completed_credit={self._completedCredit}, active_courses='{self._activeCourses}', past_courses='{self._pastCourses}', non_taken_courses='{self._nonTakenCourses}', failed_courses='{self._failedCourses}')"

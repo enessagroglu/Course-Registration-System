@@ -9,7 +9,7 @@ Course = TypeVar('Course', bound='Course')
 class Course:
     def __init__(self, courseId: str, name: str, courseCode: str, requiredCredits: int ,semesterNumber: int, courseType: str,
     courseCurrentStudentNumber: int, semester: Semester, quota: int, credit: int, sessionCount: int ,sessions: List[CourseSession], 
-    prerequisites: List[Course]):
+    prequisites: List[Course]):
         self._courseId = courseId
         self._name = name
         self._courseCode = courseCode
@@ -22,7 +22,7 @@ class Course:
         self._credit = credit
         self._sessionCount = sessionCount
         self._sessions = sessions
-        self._prerequisites = prerequisites
+        self._prequisites = prequisites
         
 
     @property
@@ -135,13 +135,13 @@ class Course:
         self._sessions = sessions
     
     @property
-    def prerequisites(self):
-        return self._prerequisites
+    def prequisites(self):
+        return self._prequisites
     
-    @prerequisites.setter
-    def prerequisites(self, prerequisites):
-        self._prerequisites = prerequisites
+    @prequisites.setter
+    def prequisites(self, prequisites):
+        self._prequisites = prequisites
    
 
     def __str__(self):
-        return f"Course(course_id='{self._courseId}', name='{self._name}', course_code='{self._courseCode}', required_credits={self._requiredCredits}, semester_number={self._semesterNumber}, course_type='{self._courseType}', course_current_student_number={self._courseCurrentStudentNumber}, semester='{self._semester}', quota={self._quota}, credit={self._credit}, session_count={self._sessionCount}, sessions='{self._sessions}', prerequisites='{self._prerequisites}'')"
+        return f"Course(course_id='{self._courseId}', name='{self._name}', course_code='{self._courseCode}', required_credits={self._requiredCredits}, semester_number={self._semesterNumber}, course_type='{self._courseType}', course_current_student_number={self._courseCurrentStudentNumber}, semester='{self._semester}', quota={self._quota}, credit={self._credit}, session_count={self._sessionCount}, sessions='{self._sessions}', prequisites='{self._prequisites}'')"
