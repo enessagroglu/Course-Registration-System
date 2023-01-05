@@ -14,7 +14,7 @@ class CourseController:
 
     def createCourse(self):
         # Load the JSON data from the file
-        with open('Courses.json', 'r') as f:
+        with open('courses.json', 'r') as f:
             data = json.load(f)
 
         # Create a list to store the Course objects
@@ -23,7 +23,7 @@ class CourseController:
         # Iterate over the list of courses in the JSON data
         for course_data in data['courses']:
         # Extract the values for the attributes of the Course object
-            course_id = count
+            course_id = str(count)
             name = course_data['CourseName']
             course_code = course_data['CourseCode']
             required_credits = course_data['requiredCredits']
@@ -61,6 +61,5 @@ class CourseController:
     # Print the list of Course objects
         print("**Created Courses:")
         for course in courses:
-            #if type(course) == 'TechnicalCourse':
             print(course)
             print("")
