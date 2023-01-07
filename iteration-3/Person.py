@@ -33,6 +33,7 @@ class Person(ABC):
         self._id = id
         value = name+surname
         self._email = convert_to_english(value)+"@marun.edu.tr"
+        self._username = value
     
     
 
