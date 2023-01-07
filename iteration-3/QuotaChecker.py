@@ -18,4 +18,3 @@ class QuotaError(Checker):
     def raise_error(self):
         return "The student was unable to sign up for {} as a result of a quota issue.".format(self.course.course_id)
     
-    #utku test
