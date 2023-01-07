@@ -1,8 +1,8 @@
 from Checker import Checker
-from Course import Course
+from FacultyTechnicalCourse import FacultyTechnicalCourse
 from Student import Student
 
-class ElectiveCourseChecker(Checker):  
+class FTEChecker(Checker):  
     def __init__(self, student, course):
         super().__init__(student)
         self.course = course
@@ -16,13 +16,16 @@ class ElectiveCourseChecker(Checker):
     def raise_course(self):
         return self.course
 
-def electiveCourseCheck(student: Student, course: Course) -> bool:
-    past_courses = student.pastCourses()
-    selected_courses = student.selectedCourses()
+def FTEcheck(student: Student):
+    selectedCourses = student.selectedCourses()
+    course = None
+    for temp in selectedCourses:
+        if isinstance(temp, FacultyTechnicalCourse):
+            course = temp
+            break
 
-    if course in past_courses:
-        return False
-    elif course in selected_courses:
-        return False
-    else:
-        return True
+        if course is not None:
+            selectedCourses.remove(course)
+            print("Student is not in graduate year.")
+            student.selectedCourses = selectedCourses
+            student.addNonTakenCourse(course)
