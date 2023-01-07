@@ -2,17 +2,9 @@ from Advisor import *
 import json
 
 class AdvisorController:
-    def __init__(self, AdvisorList: List[Advisor]):
-        self._AdvisorList = AdvisorList
-    
-    @property
-    def AdvisorList(self):
-        return self._AdvisorList
-    
-    @AdvisorList.setter
-    def AdvisorList(self, value: List[Advisor]):
-        self._AdvisorList = value
-    
+    def __init__(self):
+        print("* adivosercontroller created. *")
+        
     def createAdvisor(self):
         with open('advisors.json', 'r') as f:
             data = json.load(f)
@@ -24,9 +16,8 @@ class AdvisorController:
             advisorID = str(count)
             name = advisor_data['name']
             surname = advisor_data['surname']
-            clients = []
 
-            advisor = Advisor(name,surname,advisorID,clients)
+            advisor = Advisor(name,surname,advisorID)
 
             advisors.append(advisor)
             count += 1

@@ -1,7 +1,6 @@
 class CourseSession:
-    def __init__(self, session_id, course, schedule_list):
+    def __init__(self, session_id, schedule_list):
         self.session_id = session_id
-        self.course = course
         self.schedule_list = schedule_list
 
     def get_session_id(self):
@@ -23,4 +22,4 @@ class CourseSession:
         self.schedule_list = schedule_list
 
     def __str__(self):
-        return "CourseSession{{ sessionId={}, course={}, scheduleList={} }}".format(self.session_id, self.course, self.schedule_list)
+        return "CourseSession{{ sessionId={}, scheduleList={} }}".format(self.session_id,self.schedule_list)

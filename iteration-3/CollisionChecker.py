@@ -1,4 +1,5 @@
 from Checker import Checker
+
 class CollisionChecker(Checker): 
     def __init__(self, student, first_course, second_course):
         super().__init__(student)
