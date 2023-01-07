@@ -1,6 +1,6 @@
 from Checker import Checker
 
-class ProjectError(Checker):
+class ProjectChecker(Checker):
     def __init__(self, student, course):
         super().__init__(student)
         self.course = course

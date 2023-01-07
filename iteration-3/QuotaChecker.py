@@ -1,5 +1,7 @@
 from Checker import Checker
-class QuotaError(Checker):  
+from Course import Course
+
+class QuotaChecker(Checker):  
     def __init__(self, student, course):
         super().__init__(student)
         self.course = course
@@ -15,6 +17,12 @@ class QuotaError(Checker):
     def raise_course(self):
         return self.course
 
-    def raise_error(self):
-        return "The student was unable to sign up for {} as a result of a quota issue.".format(self.course.course_id)
-    
+
+def  quotaCheck(course: Course)-> bool:
+    quota = course.quota
+    currentNum = course.courseCurrentStudentNumber
+    if quota-currentNum > 0:
+        return True
+    else:
+        print("Quota is full")
+        return False
