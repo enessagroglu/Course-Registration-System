@@ -17,6 +17,7 @@ class QuotaChecker(Checker):
     def raise_course(self):
         return self.course
 
+
 def  quotaCheck(course: Course)-> bool:
     quota = course.quota
     currentNum = course.courseCurrentStudentNumber

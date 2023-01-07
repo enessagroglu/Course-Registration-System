@@ -24,6 +24,7 @@ class Student(Person):
         self._pastCourses = pastCourses
         self._nonTakenCourses = nonTakenCourses
         self._failedCourses = failedCourses
+        self._password = "123"
 
     def get_full_name(self):
         return f"{self._name} {self._surname}"
