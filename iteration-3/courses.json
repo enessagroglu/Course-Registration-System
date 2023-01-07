@@ -11,8 +11,11 @@
       "requiredCredits": 0,
       "courseSemester": 1,
       "courseType": "Mandatory",
-      "courseCurrentStudentNumber": 0
-    },
+      "courseCurrentStudentNumber": 0,
+      "schedule": [
+          {"day":6,"timeStart":"15","timeEnd":"17"}
+      ]
+      },
     {
       "CourseName": "Basic Chemistry",
       "CourseCode": "CHEM1007",
@@ -24,7 +27,11 @@
       "requiredCredits": 0,
       "courseSemester": 1,
       "courseType": "Mandatory",
-      "courseCurrentStudentNumber": 0
+      "courseCurrentStudentNumber": 0,
+      "schedule": [
+          {"day":4,"timeStart":"11","timeEnd":"13"},
+          {"day":5,"timeStart":"9","timeEnd":"11"}
+      ]
     },
     {
       "CourseName": "Introduction to Computer Eng.",
@@ -37,7 +44,11 @@
       "requiredCredits": 0,
       "courseSemester": 1,
       "courseType": "Mandatory",
-      "courseCurrentStudentNumber": 0
+      "courseCurrentStudentNumber": 0,
+      "schedule": [
+          {"day":3,"timeStart":"11","timeEnd":"12"},
+          {"day":2,"timeStart":"10","timeEnd":"11"}
+      ]
     },
     {
       "CourseName": "Computer Programming I",
@@ -50,7 +61,11 @@
       "requiredCredits": 0,
       "courseSemester": 1,
       "courseType": "Mandatory",
-      "courseCurrentStudentNumber": 0
+      "courseCurrentStudentNumber": 0,
+      "schedule": [
+          {"day":1,"timeStart":"11","timeEnd":"13"},
+          {"day":2,"timeStart":"11","timeEnd":"12"}
+      ]
     },
     {
       "CourseName": "Calculus I",
@@ -63,7 +78,11 @@
       "requiredCredits": 0,
       "courseSemester": 1,
       "courseType": "Mandatory",
-      "courseCurrentStudentNumber": 0
+      "courseCurrentStudentNumber": 0,
+      "schedule": [
+          {"day":1,"timeStart":"9","timeEnd":"11"},
+          {"day":3,"timeStart":"9","timeEnd":"11"}
+      ]
     },
     {
       "CourseName": "Physics I",
@@ -76,7 +95,11 @@
       "requiredCredits": 0,
       "courseSemester": 1,
       "courseType": "Mandatory",
-      "courseCurrentStudentNumber": 0
+      "courseCurrentStudentNumber": 0,
+      "schedule": [
+          {"day":2,"timeStart":"15","timeEnd":"16"},
+          {"day":4,"timeStart":"14","timeEnd":"16"}
+      ]
     },
     {
       "CourseName": "Physics Lab I",
@@ -89,7 +112,10 @@
       "requiredCredits": 0,
       "courseSemester": 1,
       "courseType": "Mandatory",
-      "courseCurrentStudentNumber": 0
+      "courseCurrentStudentNumber": 0,
+      "schedule": [
+          {"day":1,"timeStart":"17","timeEnd":"19"}
+      ]
     },
     {
       "CourseName": "Turkish Language I",
@@ -102,7 +128,10 @@
       "requiredCredits": 0,
       "courseSemester": 1,
       "courseType": "Mandatory",
-      "courseCurrentStudentNumber": 0
+      "courseCurrentStudentNumber": 0,
+      "schedule": [
+          {"day":6,"timeStart":"13","timeEnd":"15"}
+      ]
     },
     {
       "CourseName": "Ataturk’s Principles and the History of Turkish Renovation II",
@@ -115,7 +144,10 @@
       "requiredCredits": 0,
       "courseSemester": 2,
       "courseType": "Mandatory",
-      "courseCurrentStudentNumber": 0
+      "courseCurrentStudentNumber": 0,
+      "schedule": [
+          {"day":6,"timeStart":"11","timeEnd":"13"}
+      ]
     },
     {
       "CourseName": "Computer Programming II",
@@ -128,7 +160,11 @@
       "requiredCredits": 0,
       "courseSemester": 2,
       "courseType": "Mandatory",
-      "courseCurrentStudentNumber": 0
+      "courseCurrentStudentNumber": 0,
+      "schedule": [
+          {"day":1,"timeStart":"11","timeEnd":"13"},
+          {"day":2,"timeStart":"11","timeEnd":"12"}
+      ]
     },
     {
       "CourseName": "Calculus II",
@@ -141,7 +177,11 @@
       "requiredCredits": 0,
       "courseSemester": 2,
       "courseType": "Mandatory",
-      "courseCurrentStudentNumber": 0
+      "courseCurrentStudentNumber": 0,
+      "schedule": [
+          {"day":3,"timeStart":"10","timeEnd":"12"},
+          {"day":2,"timeStart":"9","timeEnd":"11"}
+      ]
     },
     {
       "CourseName": "Linear Algebra for Computer Engineering",
@@ -154,7 +194,11 @@
       "requiredCredits": 0,
       "courseSemester": 2,
       "courseType": "Mandatory",
-      "courseCurrentStudentNumber": 0
+      "courseCurrentStudentNumber": 0,
+      "schedule": [
+          {"day":1,"timeStart":"10","timeEnd":"11"},
+          {"day":4,"timeStart":"10","timeEnd":"12"}
+      ]
     },
     {
       "CourseName": "Physics II",
@@ -167,7 +211,10 @@
       "requiredCredits": 0,
       "courseSemester": 2,
       "courseType": "Mandatory",
-      "courseCurrentStudentNumber": 0
+      "courseCurrentStudentNumber": 0,
+      "schedule": [
+          {"day":4,"timeStart":"14","timeEnd":"17"}
+      ]
     },
     {
       "CourseName": "Physics Lab II",
@@ -180,7 +227,10 @@
       "requiredCredits": 0,
       "courseSemester": 2,
       "courseType": "Mandatory",
-      "courseCurrentStudentNumber": 0
+      "courseCurrentStudentNumber": 0,
+      "schedule": [
+          {"day":1,"timeStart":"14","timeEnd":"16"}
+      ]
     },
     {
       "CourseName": "Turkish Language II",
@@ -193,7 +243,10 @@
       "requiredCredits": 0,
       "courseSemester": 2,
       "courseType": "Mandatory",
-      "courseCurrentStudentNumber": 0
+      "courseCurrentStudentNumber": 0,
+      "schedule": [
+          {"day":7,"timeStart":"10","timeEnd":"12"}
+      ]
     },
     {
       "CourseName": "Non-Technical Elective - 1",
@@ -206,7 +259,10 @@
       "requiredCredits": 0,
       "courseSemester": 2,
       "courseType": "Mandatory",
-      "courseCurrentStudentNumber": 0
+      "courseCurrentStudentNumber": 0,
+      "schedule": [
+          {"day":6,"timeStart":"14","timeEnd":"16"}
+      ]
     },
     {
       "CourseName": "CSE2023",
@@ -219,7 +275,11 @@
       "requiredCredits": 0,
       "courseSemester": 3,
       "courseType": "Mandatory",
-      "courseCurrentStudentNumber": 0
+      "courseCurrentStudentNumber": 0,
+      "schedule": [
+          {"day":3,"timeStart":"12","timeEnd":"14"},
+          {"day":4,"timeStart":"13","timeEnd":"14"}
+      ]
     },
     {
       "CourseName": "Data Structures",
@@ -232,7 +292,11 @@
       "requiredCredits": 0,
       "courseSemester": 3,
       "courseType": "Mandatory",
-      "courseCurrentStudentNumber": 0
+      "courseCurrentStudentNumber": 0,
+      "schedule": [
+          {"day":1,"timeStart":"13","timeEnd":"15"},
+          {"day":3,"timeStart":"14","timeEnd":"14"}
+      ]
     },
     {
       "CourseName": "Engineering Economy",
@@ -245,7 +309,10 @@
       "requiredCredits": 0,
       "courseSemester": 3,
       "courseType": "Mandatory",
-      "courseCurrentStudentNumber": 0
+      "courseCurrentStudentNumber": 0,
+      "schedule": [
+          {"day":2,"timeStart":"18","timeEnd":"20"}
+      ]
     },
     {
       "CourseName": "Electric Circuits",
@@ -258,7 +325,11 @@
       "requiredCredits": 0,
       "courseSemester": 3,
       "courseType": "Mandatory",
-      "courseCurrentStudentNumber": 0
+      "courseCurrentStudentNumber": 0,
+      "schedule": [
+          {"day":2,"timeStart":"13","timeEnd":"15"},
+          {"day":4,"timeStart":"14","timeEnd":"15"}
+      ]
     },
     {
       "CourseName": "Differential Equations",
@@ -271,7 +342,11 @@
       "requiredCredits": 0,
       "courseSemester": 3,
       "courseType": "Mandatory",
-      "courseCurrentStudentNumber": 0
+      "courseCurrentStudentNumber": 0,
+      "schedule": [
+          {"day":5,"timeStart":"16","timeEnd":"17"},
+          {"day":4,"timeStart":"16","timeEnd":"18"}
+      ]
     },
     {
       "CourseName": "Numerical Methods",
@@ -284,7 +359,11 @@
       "requiredCredits": 0,
       "courseSemester": 3,
       "courseType": "Mandatory",
-      "courseCurrentStudentNumber": 0
+      "courseCurrentStudentNumber": 0,
+      "schedule": [
+          {"day":3,"timeStart":"13","timeEnd":"14"},
+          {"day":4,"timeStart":"14","timeEnd":"16"}
+      ]
     },
     {
       "CourseName": "Analysis of Algorithms",
@@ -297,7 +376,11 @@
       "requiredCredits": 0,
       "courseSemester": 4,
       "courseType": "Mandatory",
-      "courseCurrentStudentNumber": 0
+      "courseCurrentStudentNumber": 0,
+      "schedule": [
+          {"day":4,"timeStart":"13","timeEnd":"14"},
+          {"day":5,"timeStart":"14","timeEnd":"16"}
+      ]
     },
     {
       "CourseName": "Systems Programming",
@@ -310,7 +393,11 @@
       "requiredCredits": 0,
       "courseSemester": 4,
       "courseType": "Mandatory",
-      "courseCurrentStudentNumber": 0
+      "courseCurrentStudentNumber": 0,
+      "schedule": [
+          {"day":1,"timeStart":"14","timeEnd":"16"},
+          {"day":2,"timeStart":"13","timeEnd":"14"}
+      ]
     },
     {
       "CourseName": "Principles of Programming Languages",
@@ -323,7 +410,11 @@
       "requiredCredits": 0,
       "courseSemester": 4,
       "courseType": "Mandatory",
-      "courseCurrentStudentNumber": 0
+      "courseCurrentStudentNumber": 0,
+      "schedule": [
+          {"day":4,"timeStart":"9","timeEnd":"11"},
+          {"day":5,"timeStart":"9","timeEnd":"10"}
+      ]
     },
     {
       "CourseName": "Electronics",
@@ -336,7 +427,10 @@
       "requiredCredits": 0,
       "courseSemester": 4,
       "courseType": "Mandatory",
-      "courseCurrentStudentNumber": 0
+      "courseCurrentStudentNumber": 0,
+      "schedule": [
+          {"day":3,"timeStart":"14","timeEnd":"16"}
+      ]
     },
     {
       "CourseName": "Introduction to Probability and Statistics",
@@ -349,7 +443,11 @@
       "requiredCredits": 0,
       "courseSemester": 4,
       "courseType": "Mandatory",
-      "courseCurrentStudentNumber": 0
+      "courseCurrentStudentNumber": 0,
+      "schedule": [
+          {"day":1,"timeStart":"16","timeEnd":"17"},
+          {"day":2,"timeStart":"14","timeEnd":"16"}
+      ]
     },
     {
       "CourseName": "Summer Practice I",
@@ -375,7 +473,11 @@
       "requiredCredits": 0,
       "courseSemester": 5,
       "courseType": "Mandatory",
-      "courseCurrentStudentNumber": 0
+      "courseCurrentStudentNumber": 0,
+      "schedule": [
+          {"day":1,"timeStart":"11","timeEnd":"12"},
+          {"day":3,"timeStart":"10","timeEnd":"12"}
+      ]
     },
     {
       "CourseName": "Operating Systems",
@@ -388,7 +490,11 @@
       "requiredCredits": 0,
       "courseSemester": 5,
       "courseType": "Mandatory",
-      "courseCurrentStudentNumber": 0
+      "courseCurrentStudentNumber": 0,
+      "schedule": [
+          {"day":3,"timeStart":"9","timeEnd":"10"},
+          {"day":5,"timeStart":"10","timeEnd":"12"}
+      ]
     },
     {
       "CourseName": "Database Systems",
@@ -401,7 +507,11 @@
       "requiredCredits": 0,
       "courseSemester": 5,
       "courseType": "Mandatory",
-      "courseCurrentStudentNumber": 0
+      "courseCurrentStudentNumber": 0,
+      "schedule": [
+          {"day":2,"timeStart":"9","timeEnd":"11"},
+          {"day":4,"timeStart":"9","timeEnd":"10"}
+      ]
     },
     {
       "CourseName": "Object-Oriented Software Design",
@@ -414,7 +524,11 @@
       "requiredCredits": 0,
       "courseSemester": 5,
       "courseType": "Mandatory",
-      "courseCurrentStudentNumber": 0
+      "courseCurrentStudentNumber": 0,
+      "schedule": [
+          {"day":1,"timeStart":"9","timeEnd":"11"},
+          {"day":2,"timeStart":"11","timeEnd":"12"}
+      ]
     },
     {
       "CourseName": "Modeling and Discrete Simulation",
@@ -427,7 +541,11 @@
       "requiredCredits": 0,
       "courseSemester": 5,
       "courseType": "Mandatory",
-      "courseCurrentStudentNumber": 0
+      "courseCurrentStudentNumber": 0,
+      "schedule": [
+          {"day":4,"timeStart":"10","timeEnd":"12"},
+          {"day":5,"timeStart":"9","timeEnd":"10"}
+      ]
     },
     {
       "CourseName": "Computer Organization",
@@ -440,7 +558,11 @@
       "requiredCredits": 0,
       "courseSemester": 6,
       "courseType": "Mandatory",
-      "courseCurrentStudentNumber": 0
+      "courseCurrentStudentNumber": 0,
+      "schedule": [
+          {"day":3,"timeStart":"10","timeEnd":"12"},
+          {"day":4,"timeStart":"11","timeEnd":"12"}
+      ]
     },
     {
       "CourseName": "Software Engineering",
@@ -453,7 +575,11 @@
       "requiredCredits": 0,
       "courseSemester": 6,
       "courseType": "Mandatory",
-      "courseCurrentStudentNumber": 0
+      "courseCurrentStudentNumber": 0,
+      "schedule": [
+          {"day":3,"timeStart":"9","timeEnd":"10"},
+          {"day":4,"timeStart":"9","timeEnd":"11"}
+      ]
     },
     {
       "CourseName": "Introduction to Signals and Systems",
@@ -466,7 +592,11 @@
       "requiredCredits": 0,
       "courseSemester": 6,
       "courseType": "Mandatory",
-      "courseCurrentStudentNumber": 0
+      "courseCurrentStudentNumber": 0,
+      "schedule": [
+          {"day":2,"timeStart":"11","timeEnd":"13"},
+          {"day":4,"timeStart":"12","timeEnd":"13"}
+      ]
     },
     {
       "CourseName": "Formal Languages and Automata Theory",
@@ -479,7 +609,11 @@
       "requiredCredits": 0,
       "courseSemester": 6,
       "courseType": "Mandatory",
-      "courseCurrentStudentNumber": 0
+      "courseCurrentStudentNumber": 0,
+      "schedule": [
+          {"day":1,"timeStart":"11","timeEnd":"13"},
+          {"day":5,"timeStart":"9","timeEnd":"10"}
+      ]
     },
     {
       "CourseName": "Operations Research",
@@ -492,7 +626,11 @@
       "requiredCredits": 0,
       "courseSemester": 6,
       "courseType": "Mandatory",
-      "courseCurrentStudentNumber": 0
+      "courseCurrentStudentNumber": 0,
+      "schedule": [
+          {"day":1,"timeStart":"9","timeEnd":"11"},
+          {"day":2,"timeStart":"10","timeEnd":"11"}
+      ]
     },
     {
       "CourseName": "Technical Comm. and Entrepreneurship",
@@ -505,7 +643,10 @@
       "requiredCredits": 0,
       "courseSemester": 6,
       "courseType": "Mandatory",
-      "courseCurrentStudentNumber": 0
+      "courseCurrentStudentNumber": 0,
+      "schedule": [
+          {"day":5,"timeStart":"9","timeEnd":"11"}
+      ]
     },
     {
       "CourseName": "Summer Practice II",
@@ -531,7 +672,11 @@
       "requiredCredits": 0,
       "courseSemester": 7,
       "courseType": "Mandatory",
-      "courseCurrentStudentNumber": 0
+      "courseCurrentStudentNumber": 0,
+      "schedule": [
+          {"day":2,"timeStart":"16","timeEnd":"18"},
+          {"day":4,"timeStart":"15","timeEnd":"16"}
+      ]
     },
     {
       "CourseName": "Principles of Embedded System Design",
@@ -544,7 +689,11 @@
       "requiredCredits": 0,
       "courseSemester": 7,
       "courseType": "Mandatory",
-      "courseCurrentStudentNumber": 0
+      "courseCurrentStudentNumber": 0,
+      "schedule": [
+          {"day":4,"timeStart":"10","timeEnd":"11"},
+          {"day":5,"timeStart":"10","timeEnd":"12"}
+      ]
     },
     {
       "CourseName": "Engineering Project I",
@@ -570,7 +719,10 @@
       "requiredCredits": 0,
       "courseSemester": 7,
       "courseType": "Mandatory",
-      "courseCurrentStudentNumber": 0
+      "courseCurrentStudentNumber": 0,
+      "schedule": [
+          {"day":6,"timeStart":"19","timeEnd":"21"}
+      ]
     },
     {
       "CourseName": "Introduction to Machine Learning",
@@ -583,7 +735,11 @@
       "requiredCredits": 0,
       "courseSemester": 7,
       "courseType": "Mandatory",
-      "courseCurrentStudentNumber": 0
+      "courseCurrentStudentNumber": 0,
+      "schedule": [
+          {"day":2,"timeStart":"13","timeEnd":"15"},
+          {"day":4,"timeStart":"16","timeEnd":"17"}
+      ]
     },
     {
       "CourseName": "University Elective",
@@ -596,7 +752,10 @@
       "requiredCredits": 0,
       "courseSemester": 7,
       "courseType": "Elective",
-      "courseCurrentStudentNumber": 0
+      "courseCurrentStudentNumber": 0,
+      "schedule": [
+          {"day":7,"timeStart":"16","timeEnd":"17"}
+      ]
     },
     {
       "CourseName": "Technical Elective - 1",
@@ -609,7 +768,11 @@
       "requiredCredits": 0,
       "courseSemester": 7,
       "courseType": "Elective",
-      "courseCurrentStudentNumber": 0
+      "courseCurrentStudentNumber": 0,
+      "schedule": [
+          {"day":2,"timeStart":"12","timeEnd":"13"},
+          {"day":4,"timeStart":"12","timeEnd":"14"}
+      ]
     },
     {
       "CourseName": "Engineering Project II",
@@ -635,7 +798,10 @@
       "requiredCredits": 0,
       "courseSemester": 8,
       "courseType": "Mandatory",
-      "courseCurrentStudentNumber": 0
+      "courseCurrentStudentNumber": 0,
+      "schedule": [
+          {"day":6,"timeStart":"18","timeEnd":"20"}
+      ]
     },
     {
       "CourseName": "Faculty Technical Electives",
@@ -648,7 +814,11 @@
       "requiredCredits": 0,
       "courseSemester": 8,
       "courseType": "Elective",
-      "courseCurrentStudentNumber": 0
+      "courseCurrentStudentNumber": 0,
+      "schedule": [
+          {"day":2,"timeStart":"11","timeEnd":"12"},
+          {"day":3,"timeStart":"10","timeEnd":"12"}
+      ]
     },
     {
       "CourseName": "Non-Technical Elective - 2",
@@ -661,7 +831,10 @@
       "requiredCredits": 0,
       "courseSemester": 8,
       "courseType": "Elective",
-      "courseCurrentStudentNumber": 0
+      "courseCurrentStudentNumber": 0,
+      "schedule": [
+          {"day":1,"timeStart":"13","timeEnd":"15"}
+      ]
     },
     {
       "CourseName": "Technical Elective - 2",
@@ -674,7 +847,11 @@
       "requiredCredits": 0,
       "courseSemester": 8,
       "courseType": "Elective",
-      "courseCurrentStudentNumber": 0
+      "courseCurrentStudentNumber": 0,
+      "schedule": [
+          {"day":3,"timeStart":"15","timeEnd":"16"},
+          {"day":4,"timeStart":"10","timeEnd":"12"}
+      ]
     },
     {
       "CourseName": "Technical Elective - 3",
@@ -687,7 +864,11 @@
       "requiredCredits": 0,
       "courseSemester": 8,
       "courseType": "Elective",
-      "courseCurrentStudentNumber": 0
+      "courseCurrentStudentNumber": 0,
+      "schedule": [
+          {"day":1,"timeStart":"9","timeEnd":"11"},
+          {"day":2,"timeStart":"10","timeEnd":"11"}
+      ]
     },
     {
       "CourseName": "Technical Elective - 4",
@@ -700,7 +881,11 @@
       "requiredCredits": 0,
       "courseSemester": 8,
       "courseType": "Elective",
-      "courseCurrentStudentNumber": 0
+      "courseCurrentStudentNumber": 0,
+      "schedule": [
+          {"day":1,"timeStart":"13","timeEnd":"14"},
+          {"day":2,"timeStart":"14","timeEnd":"16"}
+      ]
     }
   ]
 }
