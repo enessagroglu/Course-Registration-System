@@ -8,8 +8,7 @@ Course = TypeVar('Course', bound='Course')
 
 class Course:
     def __init__(self, courseId: str, name: str, courseCode: str, requiredCredits: int ,semesterNumber: int, courseType: str,
-    courseCurrentStudentNumber: int, semester: Semester, quota: int, credit: int, sessionCount: int ,sessions: List[CourseSession], 
-    prerequisites: List[str]):
+    courseCurrentStudentNumber: int, semester: Semester, quota: int, credit: int, sessionCount: int ,sessions: List[CourseSession],prerequisites: List[str]),schedule: List[list]):
         self._courseId = courseId
         self._name = name
         self._courseCode = courseCode
@@ -17,14 +16,13 @@ class Course:
         self._semesterNumber = semesterNumber
         self._courseType = courseType
         self._courseCurrentStudentNumber = courseCurrentStudentNumber
-        #semester number çiftse  newSemester = Semester(semesterno.. fall) spring
         self._semester = semester
         self._quota = quota
         self._credit = credit
         self._sessionCount = sessionCount
         self._sessions = sessions
         self._prerequisites = prerequisites
-        
+        self._schedule = schedule
 
     @property
     def courseId(self):

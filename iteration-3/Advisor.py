@@ -1,6 +1,10 @@
 from Person import *
 from typing import List
 
+from Semester import *
+
+=======
+
 
 class Advisor(Person):
     def __init__(self, name: str,surname: str, id: str):
@@ -34,7 +38,11 @@ class Advisor(Person):
 #             approvedCourses.append(i)
 
     
+
+#     student.activeCourses = approvedCourses
+=======
 #     student.activeCourses = approvedCourses
 
     def __str__(self):
         return f"Advisor Name:{self._name},Advisor Surname:{self._surname},Advisor ID:{self._id} "
+
