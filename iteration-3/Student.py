@@ -6,9 +6,9 @@ from Transcript import Transcript
 from Course import Course
 from CourseSession import CourseSession
 from Schedule import Schedule
-
+from CollisionChecker import CollisionChecker
 class Student(Person):
-    def __init__(self, name: str, surname: str, id: int, semester: Semester, advisor: Advisor, transcript: Transcript, selectedCourses: List[Course], selectedSessions: CourseSession, entryYear: int, schedule: Schedule, cgpa: float, activeCourses: List[Course],  nonTakenCourses: List[Course]):
+    def __init__(self, name: str, surname: str, id: int, semester: Semester, advisor: Advisor, transcript: Transcript, selectedCourses: List[Course], selectedSessions: CourseSession, entryYear: int, schedule: Schedule, gpa: float, cgpa: float, completedCredit: int, activeCourses: List[Course], pastCourses: List[Course], nonTakenCourses: List[Course], failedCourses: List[Course]):
         super().__init__(name, surname, id)
         self._semester = semester
         self._advisor = advisor
@@ -17,15 +17,31 @@ class Student(Person):
         self._selectedSessions = selectedSessions
         self._entryYear = entryYear
         self._schedule = schedule
+        self._gpa = gpa
         self._cgpa = cgpa
+        self._completedCredit = completedCredit
         self._activeCourses = activeCourses
+        self._pastCourses = pastCourses
         self._nonTakenCourses = nonTakenCourses
+        self._failedCourses = failedCourses
         self._password = "123"
 
     def get_full_name(self):
         return f"{self._name} {self._surname}"
 
-
+    def selectedCourseCollision(self):
+        for i in range(len(self._selectedCourses)):
+            for j in range(i + 1, len(self._selectedCourses)):
+                collision1 = CollisionChecker(self._selectedCourses[i]._schedule,self._selectedCourses[j]._schedule)
+                if(not collision1.checkCollision()):
+                    print("""Course Name: {} Schedule: {}
+                             Course Name: {} Schedule: {}
+                             Ther are collapsed """.format(
+                              self._selectedCourses[i].courseCode,
+                              self._selectedCourses[i]._schedule,
+                              self._selectedCourses[j].courseCode,
+                              self._selectedCourses[j]._schedule))
+                    print("\n")
     # Getter and setter methods for the semester attribute
     @property
     def semester(self):
@@ -89,6 +105,15 @@ class Student(Person):
     def schedule(self, value: Schedule):
         self._schedule = value
 
+    # Getter and setter methods for the gpa attribute
+    @property
+    def gpa(self):
+        return self._gpa
+
+    @gpa.setter
+    def gpa(self, value: float):
+        self._gpa = value
+
     # Getter and setter methods for the cgpa attribute
     @property
     def cgpa(self):
@@ -97,6 +122,15 @@ class Student(Person):
     @cgpa.setter
     def cgpa(self, value: float):
         self._cgpa = value
+
+    # Getter and setter methods for the completedCredit attribute
+    @property
+    def completedCredit(self):
+        return self._completedCredit
+
+    @completedCredit.setter
+    def completedCredit(self, value: int):
+        self._completedCredit = value
 
     # Getter and setter methods for the activeCourses attribute
     @property
@@ -107,7 +141,15 @@ class Student(Person):
     def activeCourses(self, value: List[Course]):
         self._activeCourses = value
 
-    
+    # Getter and setter methods for the pastCourses attribute
+    @property
+    def pastCourses(self):
+        return self._pastCourses
+
+    @pastCourses.setter
+    def pastCourses(self, value: List[Course]):
+        self._pastCourses = value
+
     # Getter and setter methods for the nonTakenCourses attribute
     @property
     def nonTakenCourses(self):
@@ -118,7 +160,14 @@ class Student(Person):
         self._nonTakenCourses = value
 
     # Getter and setter methods for the failed_courses attribute
-    
+    @property
+    def failedCourses(self):
+        return self._failedCourses
+
+    @failedCourses.setter
+    def failedCourses(self, value: List[Course]):
+        self._failedCourses = value
+
     
     def calculateGPA(self):
         transcript = Transcript()
@@ -134,11 +183,33 @@ class Student(Person):
         result = cGrade/cCredit
         self._cgpa = result
 
-   
+    def printSelectedCourses(self):
+        for course in self._selectedCourses:
+            print(course)
+    
+    def printActiveCourses(self):
+        for course in self._activeCourses:
+            print(course)
+    
+    def printPastCourses(self):
+        for course in self._pastCourses:
+            print(course)
+
+    def printNonTakenCourses(self):
+        for course in self._nonTakenCourses:
+            print(course)
+        
+    def printFailedCourses(self):
+        for course in self._failedCourses:
+            print(course)
+
+    def printSelectedSessions(self):
+        for courseSession in self._selectedSessions:
+            print(courseSession)
 
     def addNonTakenCourse(self,course: Course):
         if course not in self.nonTakenCourses:
             self.nonTakenCourses.append(course)
 
     def __str__(self):
-        return f"Student(name='{self._name}', surname='{self._surname}', id={self._id}, emails='{self._email}', semester='{self._semester}', advisor='{self._advisor}', transcript='{self._transcript}', selected_courses='{self._selectedCourses}', selected_sessions='{self._selectedSessions}', entry_year={self._entryYear}, schedule='{self._schedule}', gpa={self._gpa}, cgpa={self._cgpa}, active_courses='{self._activeCourses}',  non_taken_courses='{self._nonTakenCourses}')"
+        return f"Student(name='{self._name}', surname='{self._surname}', id={self._id}, emails='{self._email}', semester='{self._semester}', advisor='{self._advisor}', transcript='{self._transcript}', selected_courses='{self._selectedCourses}', selected_sessions='{self._selectedSessions}', entry_year={self._entryYear}, schedule='{self._schedule}', gpa={self._gpa}, cgpa={self._cgpa}, completed_credit={self._completedCredit}, active_courses='{self._activeCourses}', past_courses='{self._pastCourses}', non_taken_courses='{self._nonTakenCourses}', failed_courses='{self._failedCourses}')"
