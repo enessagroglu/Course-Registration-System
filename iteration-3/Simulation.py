@@ -78,8 +78,8 @@ def showSelectedCourses(student: Student):
     else:
         for course in student._selectedCourses:
             print(f"[Course ID:{course._courseId}] {course._courseCode} {course._name}")
-    operation = int(input("Enter an ID to drop that course(0 to exit):"))
-    if operation == 0:
+    operation = input("Enter an ID to drop that course(0 to exit):")
+    if operation == "0":
         return
     else:
         for course in student._selectedCourses:
@@ -91,7 +91,10 @@ def showSelectedCourses(student: Student):
             
 
 def showSchedule(student: Student):
-    print(student._schedule)
+    for course in student._selectedCourses:
+        print(f"Selected: [Course ID:{course._courseId}] {course._schedule}")
+    for course in student._activeCourses:
+        print(f"Active: [Course ID:{course._courseId}] {course._schedule}")
 
 def showFailedCourses(student: Student):
     print(" Failed Courses: ")
@@ -112,25 +115,22 @@ def showTranscript(student: Student):
     Grades: {student._transcript.grades}
     """)
 
-def printSemesterCourse(student: Student):
-    
+def createSemesterCourse(student: Student):
     for course in courses:
         if student._semester._semesterName == course._semester._semesterName:
             if course not in student._transcript.passedCourses:
                 semesterCourses.append(course)
-    for course in semesterCourses:
-        print(f"Course ID: [{course._courseId}] Course Name: {course._courseCode} {course._name}")
 
+def printSemesterCourse(student: Student):
+
+    for course in semesterCourses:
+        if (student._semester._semesterNo >= course._semester._semesterNo):
+            print(f"Course ID: [{course._courseId}] Course Name: {course._courseCode} {course._name}")
 
 
 def registrationProcess(student1: Student):
     student = student1
 
-    # if len(student.selectedCourses) == 0:
-        
-    #     for course in student.transcript.failedCourses:
-    #         if course._semester._semesterName == student._semester._semesterName:
-    #             student._selectedCourses.append(course)
     
     printSemesterCourse(student)
     selectedID = input("Enter a Course ID to select(0 for exit):")
@@ -152,10 +152,10 @@ def registrationProcess(student1: Student):
                 studentOptions(student)
 
             #   CHECKERS
-            print(type(temp_course))
-            if temp_course not in student._transcript.passedCourses:
+            
+            if temp_course not in student._transcript.passedCourses and temp_course not in student._selectedCourses:
                 if isinstance(temp_course, MandatoryCourse):
-                    print(prequisiteCheck(student,temp_course))
+                    
                     if prequisiteCheck(student,temp_course):
                         if temp_course._courseCode == "CSE4297":
                             if(graduationProjectCheck(student)):
@@ -207,7 +207,10 @@ def registrationProcess(student1: Student):
                     else:
                         print("Quota problem.")
                         registrationProcess(student)
-                    
+            else:
+                print("This Course is Already Taken.")
+                registrationProcess(student)
+
     except ValueError as ve:
         print(ve)
         registrationProcess(student)
@@ -278,6 +281,7 @@ def simulation():
     try:
         currentUser = login()
         if type(currentUser) == Student:
+            createSemesterCourse(currentUser)
             studentOptions(currentUser)
         elif type(currentUser) == Advisor:
             pass
