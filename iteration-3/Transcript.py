@@ -1,14 +1,16 @@
 import random
 from Course import Course
 from Grade import Grade
+from Course import *
+from typing import List
 
 
 class Transcript(object):
-    def __init__(self, totalCredits=0, gpa=0, passedCourses=None, failedCourses=None):
+    def __init__(self, totalCredits: float, gpa: float, passedCourses: List[Course], failedCourses=None):
         self.totalCredits = totalCredits
         self.gpa = gpa
-        self.passedCourses = passedCourses or []
-        self.failedCourses = failedCourses or []
+        self.passedCourses = passedCourses
+        self.failedCourses = failedCourses
         self.grades = []
 
         
