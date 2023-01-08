@@ -694,7 +694,7 @@
       "CourseCode": "TExxx",
       "Credit": 5,
       "PrerequisiteCourseCodes": [
-        " "
+        ""
       ],
       "courseSessions": 1,
       "requiredCredits": 0,
