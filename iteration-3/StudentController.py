@@ -1,6 +1,15 @@
-from Student import Student
-from Transcript import Transcript
+from Student import *
+from Transcript import *
+from Semester import *
+import json
+from CourseController import *
 
+global coursesStudent
+
+coursesStudent = []
+courseController = CourseController()
+
+coursesStudent = courseController.createCourse()
 
 class StudentController:
     def __init__(self):
@@ -23,31 +32,87 @@ class StudentController:
     def set_advisors(self, advisors):
         self.advisors = advisors
 
-    def create_student(self, id, name, surname,  semester):
-        # the function creates the student with given parameters such as id, name, surname, emails and semester
-        import random
-        student = self.get_student(id, name, surname,  semester)
-        advisors = self.get_advisors()
-        index = random.randint(0, len(advisors) - 1)
-        advisor = advisors[index]
-        student.set_advisor(advisor)
-        advisor.add_student(student)
-        hm_student = self.get_hm_student()
-        hm_student[id] = student
-        student.set_transcript(Transcript(student))
+   
+    def createStudent(self):
+        # Load the JSON data from the file
+        with open('input.json', 'r', encoding="utf-8") as f:
+            data = json.load(f)
 
-    def print_students(self):
-        # Method to print all the Student objects in the hm_student map
-        hm_student = self.hm_student
-        # Iterate over the hm_student map
-        for id, student in hm_student.items():
-            # Print the student's ID and the Student object
-            print(f"{id} = {student}")
+        createdStudents = []
 
+        for student_data in data['AllStudents']:
+            FullName = student_data['Name'].split(" ")
+            name = FullName[0]
+            surname = FullName[1]
+            id = student_data['StudentId']
+            semester_number = student_data['CurrentSemester']
+            semester = Semester(semester_number,getPeriod(semester_number))
+            entryYear = student_data['Enteryear']
+            selectedCourses =[]
+            selectedSessions =[]
+            schedule = []
+            activeCourses = []
+            failedCoursesStr = student_data['FailedCourses']
+            failedCourse = []
+            for course in failedCoursesStr:
+                for ccode in coursesStudent:
+                    if course['code'] == ccode._courseCode:
+                        failedCourse.append(ccode)
+                    else:
+                        continue
+            passedCourseStr = student_data['PassedCourses']
+            passedCourse = []
+            for course in passedCourseStr:
+                for ccode in coursesStudent:
+                    if course['code'] == ccode._courseCode:
+                        passedCourse.append(ccode)
+                    else:
+                        continue
+            nonTakenCourses = []
+            for course in coursesStudent:
+                if course not in passedCourse and course not in failedCourse:
+                    nonTakenCourses.append(course)
+            totalCredits = student_data['TotalGivenCredits']
+
+            grades = []
+
+            past_courses = []
+
+            past_courses.extend(passedCourseStr)
+            past_courses.extend(failedCoursesStr)
+            
+            
+            for course in past_courses:
+           
+                grades.append([course['code'] , course['letterGrade']])
+                
+
+            transcript = Transcript(totalCredits,0,passedCourse,failedCourse,grades)
+            transcript.calculateGPA()
+
+            student = Student(name,surname,id,semester,transcript,selectedCourses,selectedSessions,entryYear,schedule,activeCourses,nonTakenCourses)
+            createdStudents.append(student)
+
+        return createdStudents
+
+
+
+
+            
+
+    def print_students(self, students: List[Student]):
+       for student in students:
+        print(f"Name: {student._name} Surname: {student._surname} Email: {student._email} gpa:{student._transcript.gpa}")
+
+def getPeriod(semesterNo):
+        if (semesterNo % 2) == 0:
+            return "Spring"
+        else:
+            return "Fall"
 
 
 student_controller = StudentController()
 
-a = student_controller.create_student(1, "John", "Doe",  "2")
+studentss = student_controller.createStudent()
 
-student_controller.print_students(a)
+student_controller.print_students(studentss)

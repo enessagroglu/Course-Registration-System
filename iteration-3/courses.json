@@ -814,7 +814,7 @@
       "courseSessions": 1,
       "requiredCredits": 0,
       "courseSemester": 8,
-      "courseType": "Elective",
+      "courseType": "TExxx",
       "courseCurrentStudentNumber": 0,
       "schedule": [
           {"day":1,"timeStart":"13","timeEnd":"15"}
@@ -830,7 +830,7 @@
       "courseSessions": 1,
       "requiredCredits": 0,
       "courseSemester": 8,
-      "courseType": "Elective",
+      "courseType": "TExxx",
       "courseCurrentStudentNumber": 0,
       "schedule": [
           {"day":3,"timeStart":"15","timeEnd":"16"},
@@ -847,7 +847,7 @@
       "courseSessions": 1,
       "requiredCredits": 0,
       "courseSemester": 8,
-      "courseType": "Elective",
+      "courseType": "TExxx",
       "courseCurrentStudentNumber": 0,
       "schedule": [
           {"day":1,"timeStart":"9","timeEnd":"11"},
@@ -864,7 +864,7 @@
       "courseSessions": 1,
       "requiredCredits": 0,
       "courseSemester": 8,
-      "courseType": "Elective",
+      "courseType": "TExxx",
       "courseCurrentStudentNumber": 0,
       "schedule": [
           {"day":1,"timeStart":"13","timeEnd":"14"},

@@ -21,7 +21,8 @@ def inputCreator():
 
         Enteryear = random.choice([2017,2018,2019,2020,2021,2022])
         year = 2022 - Enteryear 
-        current_semester= (year*2) + 1
+        inc = random.choice([0,1])
+        current_semester= (year*2)+inc
         
         if current_semester > 8 :
             current_semester = 8
@@ -31,34 +32,10 @@ def inputCreator():
         
 
         
-        def convert_to_english(s: str) -> str:
-        # Create a dictionary of non-English characters and their English equivalents
-            replacements = {
-                'ş': 's',
-                'Ş': 'S',
-                'ğ': 'g',
-                'Ğ': 'G',
-                'ü': 'u',
-                'Ü': 'U',
-                'ö': 'o',
-                'Ö': 'O',
-                'ç': 'c',
-                'Ç': 'C',
-                'ı': 'i',
-                'İ': 'I',
-            }
-
-            # Iterate through the string and replace each non-English character with its English equivalent
-            result = ''
-            for c in s:
-                if c in replacements:
-                    result += replacements[c]
-                else:
-                    result += c
-            return result
-        email = convert_to_english(name).lower().replace(" ","")+str(Enteryear)+"@marun.edu.tr"
-
+        
         for course in courses["courses"]:
+            if course["courseSemester"]>current_semester:
+                continue
             # Generate a random number between 0 and 1
             chance = random.uniform(0, 1)
             
@@ -110,7 +87,6 @@ def inputCreator():
         student = {
             "Name": name,
             "StudentId":student_id,
-            "StudentMail" : email,
             "preRequisite" : preRequisite,
             "Enteryear": Enteryear,
             "CurrentSemester": current_semester,
@@ -133,6 +109,5 @@ def inputCreator():
 
 
 inputCreator()
-
 
 

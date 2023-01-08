@@ -2,12 +2,12 @@ from typing import List
 from Person import Person
 from Semester import Semester
 from Transcript import Transcript
-from Course import Course
+from Course import *
 from CourseSession import CourseSession
 from CollisionChecker import *
 
 class Student(Person):
-    def __init__(self, name: str, surname: str, id: int, semester: Semester, transcript: Transcript, selectedCourses: List[Course], selectedSessions: CourseSession, entryYear: int, schedule: List[list], gpa: float, cgpa: float, activeCourses: List[Course],  nonTakenCourses: List[Course], failedCourses: List[Course]):
+    def __init__(self, name: str, surname: str, id: int, semester: Semester, transcript: Transcript, selectedCourses: List[Course], selectedSessions: CourseSession, entryYear: int, schedule: List[list], activeCourses: List[Course],  nonTakenCourses: List[Course]):
         super().__init__(name, surname, id)
         self._semester = semester
         self._transcript = transcript
@@ -15,10 +15,8 @@ class Student(Person):
         self._selectedSessions = selectedSessions
         self._entryYear = entryYear
         self._schedule = schedule
-        self._cgpa = cgpa
         self._activeCourses = activeCourses
         self._nonTakenCourses = nonTakenCourses
-        self._failedCourses = failedCourses
         self._password = "123"
 
     def get_full_name(self):
@@ -70,14 +68,6 @@ class Student(Person):
     def entryYear(self, value: int):
         self._entryYear = value
      
-    # Getter and setter methods for the cgpa attribute
-    @property
-    def cgpa(self):
-        return self._cgpa
-
-    @cgpa.setter
-    def cgpa(self, value: float):
-        self._cgpa = value
 
     # Getter and setter methods for the activeCourses attribute
     @property

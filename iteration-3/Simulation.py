@@ -1,5 +1,5 @@
 from CourseController import *
-# from StudentController import *
+from StudentController import *
 from AdvisorController import *
 from Student import *
 from QuotaChecker import *
@@ -13,22 +13,24 @@ from Advisor import *
 class Simulation:
     
     courseController = CourseController()
-    #studentController = StudentController()
+    studentController = StudentController()
     advisorController = AdvisorController()
 
     global courses
     global semesterCourses
     global advisors
+    global students
+    global temp_course
+
     courses = courseController.createCourse()
     advisors = advisorController.createAdvisor()
     semesterCourses = []
-    #students = studentController.createStudent()
+    students = studentController.createStudent()
     
     global mcgAdvisor
     mcgAdvisor = Advisor("Murat", "Ganiz","")
     
 
-student1 = Student("enes","sagiroglu","150119725","","","","","","","","","","","")
 
 def studentMenu():
     menuText = """
@@ -76,7 +78,7 @@ def showSelectedCourses(student: Student):
     else:
         for course in student._selectedCourses:
             print(f"[Course ID:{course._courseId}] {course._courseCode} {course._name}")
-    operation = input("Enter an ID to drop that course(0 to exit):")
+    operation = int(input("Enter an ID to drop that course(0 to exit):"))
     if operation == 0:
         return
     else:
@@ -106,7 +108,8 @@ def showTranscript(student: Student):
     print(f""" 
     Total given Credits:{student.transcript.totalCredits}
     GPA: {student._transcript.gpa}
-    Semester: {student._semester}
+    Semester: {student._semester._semesterName} - {student._semester._semesterNo}
+    Grades: {student._transcript.grades}
     """)
 
 def printSemesterCourse(student: Student):
@@ -123,46 +126,64 @@ def printSemesterCourse(student: Student):
 def registrationProcess(student1: Student):
     student = student1
 
-    if len(student.selectedCourses) == 0:
+    # if len(student.selectedCourses) == 0:
         
-        for course in student.transcript.failedCourses:
-            if course._semester._semesterName == student._semester._semesterName:
-                student._selectedCourses.append(course)
+    #     for course in student.transcript.failedCourses:
+    #         if course._semester._semesterName == student._semester._semesterName:
+    #             student._selectedCourses.append(course)
     
-    printSemesterCourse()
+    printSemesterCourse(student)
     selectedID = input("Enter a Course ID to select(0 for exit):")
     try:
-        selectedID = selectedID.strip()
+        
         if not selectedID:
             print("invalid CourseID")
             registrationProcess(student)
-        elif selectedID == 0:
+        elif selectedID == "0":
             studentOptions(student)
         else:
             for course in courses:
-                if str(selectedID) == course._courseId:
+                if selectedID == course._courseId:
                     temp_course = course
+                    break
+            
+            if temp_course == None:
+                print("Invalid Course ID")
+                studentOptions(student)
 
             #   CHECKERS
+            print(type(temp_course))
             if temp_course not in student._transcript.passedCourses:
-                if isinstance(temp_course, MandatoryCourse) and prequisiteCheck(student,temp_course):
-                    if temp_course._courseCode == "CSE4297":
-                        if(graduationProjectCheck(student)):
-                            student._selectedCourses.append(temp_course)
-                            registrationProcess(student)
-                        else:
-                            student._selectedCourses.append(temp_course)
-                            registrationProcess(student)
-                else:
-                    if quotaCheck(temp_course):
-
-                        if isinstance(temp_course, TechnicalCourse) and prequisiteCheck(student,temp_course):
-                            semNo = int(student._semester._semesterNo)
-                            if TEcheck(student) and semNo>7 and checkCredit(student):
+                if isinstance(temp_course, MandatoryCourse):
+                    print(prequisiteCheck(student,temp_course))
+                    if prequisiteCheck(student,temp_course):
+                        if temp_course._courseCode == "CSE4297":
+                            if(graduationProjectCheck(student)):
                                 student._selectedCourses.append(temp_course)
                                 registrationProcess(student)
                             else:
-                                print("You are not allowed to take TE course")
+                                student._selectedCourses.append(temp_course)
+                                registrationProcess(student)
+                        else:
+                            student._selectedCourses.append(temp_course)
+                            registrationProcess(student)
+                    else:
+                        print("PrereqError")
+                        registrationProcess(student)
+                else:
+                    if quotaCheck(temp_course):
+
+                        if isinstance(temp_course, TechnicalCourse):
+                            if prequisiteCheck(student,temp_course):
+                                semNo = int(student._semester._semesterNo)
+                                if TEcheck(student) and semNo>7 and checkCredit(student):
+                                    student._selectedCourses.append(temp_course)
+                                    registrationProcess(student)
+                                else:
+                                    print("You are not allowed to take TE course")
+                                    registrationProcess(student)
+                            else:
+                                print("PrereqError")
                                 registrationProcess(student)
                         elif isinstance(temp_course,NTE_Course):
                             if electiveCourseCheck(student, temp_course):
@@ -171,13 +192,17 @@ def registrationProcess(student1: Student):
                             else:
                                 print(f"You can not allowed to take this course:{temp_course._courseCode} ")
                                 registrationProcess(student)
-                        elif isinstance(temp_course, FacultyTechnicalCourse) and prequisiteCheck(student,temp_course):
-                            semNo = int(student._semester._semesterNo)
-                            if TEcheck(student) and semNo>7 and checkCredit(student):
-                                student._selectedCourses.append(temp_course)
-                                registrationProcess(student)
+                        elif isinstance(temp_course, FacultyTechnicalCourse):
+                            if prequisiteCheck(student,temp_course):
+                                semNo = int(student._semester._semesterNo)
+                                if TEcheck(student) and semNo>7 and checkCredit(student):
+                                    student._selectedCourses.append(temp_course)
+                                    registrationProcess(student)
+                                else:
+                                    print("You are not allowed to take FTE course")
+                                    registrationProcess(student)
                             else:
-                                print("You are not allowed to take FTE course")
+                                print("PrereqError")
                                 registrationProcess(student)
                     else:
                         print("Quota problem.")
@@ -189,9 +214,7 @@ def registrationProcess(student1: Student):
 
 
 def login():
-    students = []
-    students.append(student1)
-
+    
     print("* Please Login *")
     username = input("Username:")
     password = input("Password:")
@@ -218,7 +241,7 @@ def login():
 
 def studentOptions(student: Student):
     studentMenu()
-    option = input("Select an operation:")
+    option = int(input("Select an operation:"))
 
     if option == 1:
         showPassedCourses(student)
@@ -247,8 +270,9 @@ def studentOptions(student: Student):
     elif option == 9:
         for advisor in advisors:
             print(f"Name:{advisor._name} Surname:{advisor._surname} Email: {advisor._email}")
+        studentOptions(student)
     elif option == 0:
-        login()
+        simulation()
 
 def simulation():
     try:

@@ -64,11 +64,11 @@ class CourseController:
             # Create a new Course object with the extracted values
             if course_type == "Mandatory":
                 course = MandatoryCourse(course_id, name, course_code, required_credits, semester_number, course_type, course_current_student_number, semesterclass, quota, credit, session_count, sessions, prerequisites,course_schedule)
-            elif course_type == "NTE":
+            elif course_type == "NTExxx":
                 course = NTE_Course(course_id, name, course_code, required_credits, semester_number, course_type, course_current_student_number, semesterclass, quota, credit, session_count, sessions, prerequisites,course_schedule)
-            elif course_type == "TE":
+            elif course_type == "TExxx":
                 course = TechnicalCourse(course_id, name, course_code, required_credits, semester_number, course_type, course_current_student_number, semesterclass, quota, credit, session_count, sessions, prerequisites,course_schedule)
-            elif course_type == "FTE":
+            elif course_type == "FTExxx":
                 course = FacultyTechnicalCourse(course_id, name, course_code, required_credits, semester_number, course_type, course_current_student_number, semesterclass, quota, credit, session_count, sessions, prerequisites,course_schedule)
             elif course_type == "Elective":
                 course = ElectiveCourse(course_id, name, course_code, required_credits, semester_number, course_type, course_current_student_number, semesterclass, quota, credit, session_count, sessions, prerequisites,course_schedule)

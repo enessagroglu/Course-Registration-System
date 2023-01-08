@@ -1,11 +1,14 @@
-from Student import *
-from Advisor import *
+from InputCreator import *
+import json
+
+inputCreator()
+
+with open('input.json', 'r',encoding="utf-8") as f:
+    data = json.load(f)
 
 
-def approve( )->bool:
-        cChecker = Advisor
-        #print(cChecker.selectedCourseCollision(student))
-        a = cChecker.deneme(cChecker)
-        return a
+        # Iterate over the list of courses in the JSON data
+    for course_data in data['AllStudents']:
+        print(course_data)
+        print("\n ** \n")
 
-print(approve())
