@@ -14,10 +14,12 @@ class Advisor(Person):
 
     def approve(self, student: Student)->bool:
         if selectedCourseCollision(student) == False:
+            print("CollisionError")
             return False
         else:
             for course in student._selectedCourses:
                 student._activeCourses.append(course)
+            for course in student._activeCourses:
                 student._selectedCourses.remove(course)
             print("Your Selected Courses have been approved")
             return True
