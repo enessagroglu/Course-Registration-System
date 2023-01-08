@@ -1,48 +1,44 @@
 from Person import *
 from typing import List
+from Student import *
+from CollisionChecker import *
 
-from Semester import *
 
-=======
 
 
 class Advisor(Person):
     def __init__(self, name: str,surname: str, id: str):
         super().__init__(name, surname,id)
-        
-        
         self._password = "123"
     
 
-# def approve(course: Course, student: Student)->bool:
-#     if isinstance(course, ElectiveCourse):
-#         quotaChecked = quotaCheck(course)
-#         electiveCourseChecked = electiveCourseCheck(student,course)
-#     prequisiteChecked = prequisiteCheck(student, course)
-#     return quotaChecked and electiveCourseChecked and prequisiteChecked
-
-# def ApproveSelectedCourses(student: Student):
-#     fallOrSpring = student.semester().get_fall_or_spring()
-#     semesterID = student.semester().semesterID()
-#     approvedCourses = []
-#     if fallOrSpring == "Fall":
-#         TEcheck(student)
-#     if not (semesterID <= 7) and fallOrSpring == "Fall":
-#         FTEcheck(student)
-#     minCreditCheck(student)
-#     graduationProjectCheck(student)
-#     for i in student.selectedCourses():
-#         if i in student.activeCourses():
-#             continue
-#         else:
-#             approvedCourses.append(i)
-
+    def approve(self, student: Student)->bool:
+        if selectedCourseCollision(student) == False:
+            return False
+        else:
+            for course in student._selectedCourses:
+                student._activeCourses.append(course)
+            print("Your Selected Courses have been approved")
+            return True
     
+ 
 
-#     student.activeCourses = approvedCourses
-=======
-#     student.activeCourses = approvedCourses
-
+def selectedCourseCollision(student: Student):
+    for i in range(len(student._selectedCourses)):
+        for j in range(i + 1, len(student._selectedCourses)):
+            collision1 = CollisionChecker(student._selectedCourses[i]._schedule,student._selectedCourses[j]._schedule)
+            if(not collision1.checkCollision()):
+                print("""Course Name: {} Schedule: {}
+                        Course Name: {} Schedule: {}
+                        Ther are collapsed """.format(
+                        student._selectedCourses[i].courseCode,
+                        student._selectedCourses[i]._schedule,
+                        student._selectedCourses[j].courseCode,
+                        student._selectedCourses[j]._schedule))
+                    
+                print("\n")
+                return False
+    
     def __str__(self):
         return f"Advisor Name:{self._name},Advisor Surname:{self._surname},Advisor ID:{self._id} "
 
