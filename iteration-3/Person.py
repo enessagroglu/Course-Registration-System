@@ -32,6 +32,7 @@ class Person(ABC):
         self._surname = surname
         self._id = id
         value = name+surname
+        value = value.lower()
         self._email = convert_to_english(value)+"@marun.edu.tr"
         self._username = value
     
