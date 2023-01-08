@@ -258,7 +258,7 @@
       "courseSessions": 1,
       "requiredCredits": 0,
       "courseSemester": 2,
-      "courseType": "Mandatory",
+      "courseType": "NTExxx",
       "courseCurrentStudentNumber": 0,
       "schedule": [
           {"day":6,"timeStart":"14","timeEnd":"16"}
@@ -751,7 +751,7 @@
       "courseSessions": 1,
       "requiredCredits": 0,
       "courseSemester": 7,
-      "courseType": "Elective",
+      "courseType": "TExxx",
       "courseCurrentStudentNumber": 0,
       "schedule": [
           {"day":2,"timeStart":"12","timeEnd":"13"},
@@ -797,7 +797,7 @@
       "courseSessions": 1,
       "requiredCredits": 0,
       "courseSemester": 8,
-      "courseType": "Elective",
+      "courseType": "FTExxx",
       "courseCurrentStudentNumber": 0,
       "schedule": [
           {"day":2,"timeStart":"11","timeEnd":"12"},
@@ -814,7 +814,7 @@
       "courseSessions": 1,
       "requiredCredits": 0,
       "courseSemester": 8,
-      "courseType": "TExxx",
+      "courseType": "NTExxx",
       "courseCurrentStudentNumber": 0,
       "schedule": [
           {"day":1,"timeStart":"13","timeEnd":"15"}
