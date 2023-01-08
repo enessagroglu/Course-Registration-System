@@ -742,22 +742,6 @@
       ]
     },
     {
-      "CourseName": "University Elective",
-      "CourseCode": "UE",
-      "Credit": 3,
-      "PrerequisiteCourseCodes": [
-        ""
-      ],
-      "courseSessions": 1,
-      "requiredCredits": 0,
-      "courseSemester": 7,
-      "courseType": "Elective",
-      "courseCurrentStudentNumber": 0,
-      "schedule": [
-          {"day":7,"timeStart":"16","timeEnd":"17"}
-      ]
-    },
-    {
       "CourseName": "Technical Elective - 1",
       "CourseCode": "TExxx",
       "Credit": 5,

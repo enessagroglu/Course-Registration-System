@@ -18,14 +18,8 @@ class GraduationProjectChecker(Checker):
 
 
 def graduationProjectCheck(student: Student):
-    selectedCourseList = student.selectedCourses()
-    if student.completedCredit() < 165:
-        course = None
-        for temp in selectedCourseList:
-            if temp.courseCode() == "CSE4197":
-                course = temp
-                break
-        if course is not None:
-            selectedCourseList.remove(course)
-            student.addNonTakenCourse(course)
-            print("Project error")
+    if student._transcript.totalCredits < 165:
+        print("You do not have enough credits to take 'CSE4297'")
+        return False
+    else:
+        return True
