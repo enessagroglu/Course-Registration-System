@@ -1,5 +1,9 @@
-class UncompletedCreditChecker(Error):
-    def init(self, student, course):
+from Checker import *
+from Student import *
+from Course import *
+
+class UncompletedCreditChecker(Checker):
+    def init(self, student: Student, course: Course):
         super().init(student)
         self.course = course
 
