@@ -18,6 +18,7 @@ class Advisor(Person):
         else:
             for course in student._selectedCourses:
                 student._activeCourses.append(course)
+                student._selectedCourses.remove(course)
             print("Your Selected Courses have been approved")
             return True
     
@@ -27,7 +28,7 @@ def selectedCourseCollision(student: Student):
     for i in range(len(student._selectedCourses)):
         for j in range(i + 1, len(student._selectedCourses)):
             collision1 = CollisionChecker(student._selectedCourses[i]._schedule,student._selectedCourses[j]._schedule)
-            if(not collision1.checkCollision()):
+            if(collision1.checkCollision()):
                 print("""Course Name: {} Schedule: {}
                         Course Name: {} Schedule: {}
                         Ther are collapsed """.format(

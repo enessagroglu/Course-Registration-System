@@ -20,11 +20,12 @@ class CourseController:
 
         # Create a list to store the Course objects
         courses = []
-        course_schedule = []
-        course_schedule2 = []
+        
         count = 1
         # Iterate over the list of courses in the JSON data
         for course_data in data['courses']:
+            course_schedule = []
+            course_schedule2 = []
         # Extract the values for the attributes of the Course object
             course_id = str(count)
             name = course_data['CourseName']

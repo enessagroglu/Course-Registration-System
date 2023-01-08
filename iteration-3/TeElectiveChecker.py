@@ -19,8 +19,8 @@ class TeElectiveChecker(Checker):
 
 def TEcheck(student: Student):
     count = 0
-    selectedCourseList = student._selectedCourses()
-    activeCourseList = student._activeCourses()
+    selectedCourseList = student._selectedCourses
+    activeCourseList = student._activeCourses
     for i in range(len(activeCourseList)):
         courseActive = activeCourseList[i]
         if isinstance(courseActive, TechnicalCourse):
