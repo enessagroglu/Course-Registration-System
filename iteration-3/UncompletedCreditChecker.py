@@ -16,5 +16,14 @@ class UncompletedCreditChecker(Checker):
     def raise_course(self):
         return self.course
 
+
     def raise_error(self):
-        return f"The advisor didn't approve {self.course.get_course_id()} because student completed credits < 155"
+        return f"You can not take {self.course._courseCode()} because student completed credits < 155"
+
+def checkCredit(student: Student):
+    
+    if student._transcript.totalCredits < 155:
+        print("Your Total Credits is not enough to take TE Course.")
+        return False
+    else:
+        return True

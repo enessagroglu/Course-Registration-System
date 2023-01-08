@@ -17,12 +17,16 @@ class ElectiveCourseChecker(Checker):
         return self.course
 
 def electiveCourseCheck(student: Student, course: Course) -> bool:
-    past_courses = student.pastCourses()
+    past_courses = student._transcript.passedCourses
     selected_courses = student.selectedCourses()
 
     if course in past_courses:
         return False
     elif course in selected_courses:
+        print("You Already Selected this Course")
+        return False
+    elif course in student._activeCourses:
+        print("You are already taking this Course")
         return False
     else:
         return True

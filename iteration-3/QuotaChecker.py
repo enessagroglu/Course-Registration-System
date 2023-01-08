@@ -19,8 +19,8 @@ class QuotaChecker(Checker):
 
 
 def  quotaCheck(course: Course)-> bool:
-    quota = course.quota
-    currentNum = course.courseCurrentStudentNumber
+    quota = course._quota
+    currentNum = course._courseCurrentStudentNumber
     if quota-currentNum > 0:
         return True
     else:

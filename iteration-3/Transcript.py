@@ -6,7 +6,7 @@ from typing import List
 
 
 class Transcript(object):
-    def __init__(self, totalCredits: float, gpa: float, passedCourses: List[Course], failedCourses=None):
+    def __init__(self, totalCredits: int, gpa: float, passedCourses: List[Course], failedCourses=None):
         self.totalCredits = totalCredits
         self.gpa = gpa
         self.passedCourses = passedCourses

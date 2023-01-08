@@ -5,8 +5,8 @@ from Advisor import Advisor
 from Transcript import Transcript
 from Course import Course
 from CourseSession import CourseSession
-from Schedule import Schedule
-from CollisionChecker import CollisionChecker
+from CollisionChecker import *
+
 class Student(Person):
     def __init__(self, name: str, surname: str, id: int, semester: Semester, advisor: Advisor, transcript: Transcript, selectedCourses: List[Course], selectedSessions: CourseSession, entryYear: int, schedule: Schedule, gpa: float, cgpa: float, completedCredit: int, activeCourses: List[Course], pastCourses: List[Course], nonTakenCourses: List[Course], failedCourses: List[Course]):
         super().__init__(name, surname, id)
@@ -96,14 +96,7 @@ class Student(Person):
     def entryYear(self, value: int):
         self._entryYear = value
 
-     # Getter and setter methods for the schedule attribute
-    @property
-    def schedule(self):
-        return self._schedule
-
-    @schedule.setter
-    def schedule(self, value: Schedule):
-        self._schedule = value
+     
 
     # Getter and setter methods for the gpa attribute
     @property

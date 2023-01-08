@@ -2,16 +2,27 @@ from CourseController import *
 from StudentController import *
 from AdvisorController import *
 from Student import *
+from QuotaChecker import *
+from TeElectiveChecker import *
+from UncompletedCreditChecker import *
+from PrequisiteChecker import *
+from ElectiveCourseChecker import *
+from GraduationProjectChecker import *
 
 class RegisterSystem:
     
     courseController = CourseController()
     #studentController = StudentController()
-    #advisorController = AdvisorController()
+    advisorController = AdvisorController()
+
     global courses
+    global semesterCourses
+    global advisors
     courses = courseController.createCourse()
+    advisors = advisorController.createAdvisor()
+    semesterCourses = []
     #students = studentController.createStudent()
-    #advisors = advisorController.createAdvisor()
+    
 
     #courseController.printCourses(courses)
 student1 = Student("enes","sagiroglu","150119725","","","","","","","","","","","","","","")
@@ -94,13 +105,19 @@ def showTranscript(student: Student):
     Semester: {student._semester}
     """)
 
+def printSemesterCourse(student: Student):
+    
+    for course in courses:
+        if student._semester._semesterName == course._semester._semesterName:
+            if course not in student._transcript.passedCourses:
+                semesterCourses.append(course)
+    for course in semesterCourses:
+        print(f"Course ID: [{course._courseId}] Course Name: {course._courseCode} {course._name}")
+
+
+
 def registrationProcess(student1: Student):
     student = student1
-    semesterCourses = []
-
-    for course in courses:
-        if course._semester._semesterName == student._semester._semesterName:
-            semesterCourses.append(course)
 
     if len(student.selectedCourses) == 0:
         
@@ -108,11 +125,7 @@ def registrationProcess(student1: Student):
             if course._semester._semesterName == student._semester._semesterName:
                 student._selectedCourses.append(course)
     
-    for course in courses:
-        if course._semester._semesterName == student._semester._semesterName:
-            print(f"Course ID: [{course._courseId}] Course Name: {course._courseCode} {course._name}")
-        else:
-            pass
+    printSemesterCourse()
     selectedID = input("Enter a Course ID to select(0 for exit):")
     try:
         selectedID = selectedID.strip()
@@ -126,14 +139,50 @@ def registrationProcess(student1: Student):
                 if str(selectedID) == course._courseId:
                     temp_course = course
 
-            #   CHECKERLAR BURAYA
-            student._selectedCourses.append(temp_course)
-            registrationProcess(student)
+            #   CHECKERS
+            if temp_course not in student._transcript.passedCourses:
+                if isinstance(temp_course, MandatoryCourse) and prequisiteCheck(student,temp_course):
+                    if temp_course._courseCode == "CSE4297":
+                        if(graduationProjectCheck(student)):
+                            student._selectedCourses.append(temp_course)
+                            registrationProcess(student)
+                        else:
+                            student._selectedCourses.append(temp_course)
+                            registrationProcess(student)
+                else:
+                    if quotaCheck(temp_course):
+
+                        if isinstance(temp_course, TechnicalCourse) and prequisiteCheck(student,temp_course):
+                            semNo = int(student._semester._semesterNo)
+                            if TEcheck(student) and semNo>7 and checkCredit(student):
+                                student._selectedCourses.append(temp_course)
+                                registrationProcess(student)
+                            else:
+                                print("You are not allowed to take TE course")
+                                registrationProcess(student)
+                        elif isinstance(temp_course,NTE_Course):
+                            if electiveCourseCheck(student, temp_course):
+                                student._selectedCourses.append(temp_course)
+                                registrationProcess(student)
+                            else:
+                                print(f"You can not allowed to take this course:{temp_course._courseCode} ")
+                                registrationProcess(student)
+                        elif isinstance(temp_course, FacultyTechnicalCourse) and prequisiteCheck(student,temp_course):
+                            semNo = int(student._semester._semesterNo)
+                            if TEcheck(student) and semNo>7 and checkCredit(student):
+                                student._selectedCourses.append(temp_course)
+                                registrationProcess(student)
+                            else:
+                                print("You are not allowed to take FTE course")
+                                registrationProcess(student)
+                    else:
+                        print("Quota problem.")
+                        registrationProcess(student)
+                    
     except ValueError as ve:
         print(ve)
         registrationProcess(student)
 
-    
 
 def login():
     students = []
@@ -161,7 +210,7 @@ def login():
         print(ve)
         login()
     
-    
+
 
 def studentOptions(student: Student):
     studentMenu()

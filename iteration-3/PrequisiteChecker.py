@@ -18,10 +18,20 @@ class PrequisiteCheck(Checker):
 
 
 def prequisiteCheck(student: Student, course: Course)-> bool:
-    past_courses = student.pastCourses()
-    prequisites = course.prequisites()
-        
-    for need in prequisites:
-        if need not in past_courses:
-            print("You need to take "+ need+" before that course.")
+    past_courses = student._transcript.passedCourses()
+    prerequisites = course._prerequisites
+    count = 0
+    if len(prerequisites) == 0:
+        return True
+    else:
+        for preq in prerequisites:
+            for course in past_courses:
+                if preq == course._courseCode:
+                    count += 1
+                    break
+                else:
+                    pass
+        if len(prerequisites)> count:
             return False
+        else:
+            return True
