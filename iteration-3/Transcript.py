@@ -1,4 +1,5 @@
 import random
+from Course import Course
 from Grade import Grade
 from Course import *
 from typing import List
@@ -13,7 +14,7 @@ class Transcript(object):
         self.grades = []
 
         
-    def calculatePassFailCourses(self, course: Course):
+    def calculatePassFailCourses(self, course : Course):
         grade = Grade(course, random.randint(0, 100))  # Create a random grade for the course
         if grade.hasPassed() and  course not in self.passedCourses:  # Check if the course has been passed
             self.totalCredits += course.credit  # Add the course credits to the total credits
@@ -29,7 +30,7 @@ class Transcript(object):
             totalCredits += course.credit
 
         for course in self.failedCourses:
-            totalCredits += course.credit
+            totalCredits += course.credits
 
         return totalCredits
     

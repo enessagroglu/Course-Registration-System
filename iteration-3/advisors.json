@@ -1,0 +1,48 @@
+{
+  "advisors": [
+    {
+      "name" : "Mustafa",
+      "surname" : "Agaoglu"
+    },
+    {
+      "name" : "Murat Can",
+      "surname" : "Ganiz"
+    },
+    {
+      "name" : "Mustafa Borahan",
+      "surname" : "Tumer"
+    },
+    {
+      "name" : "Betul",
+      "surname" : "Boz"
+    },
+    {
+      "name" : "Mujdat",
+      "surname" : "Soyturk"
+    },
+    {
+      "name" : "Ali Fuat",
+      "surname" : "Alkaya"
+    },
+    {
+      "name" : "Sanem",
+      "surname" : "Arslan Yilmaz"
+    },
+    {
+      "name" : "Cigdem",
+      "surname" : "Eroglu Erdem"
+    },
+    {
+      "name" : "Haluk",
+      "surname" : "Topcuoglu"
+    },
+    {
+      "name" : "Omer",
+      "surname" : "Korcak"
+    },
+    {
+      "name" : "Fatma",
+      "surname" : "Corut Ergin"
+    }
+  ]
+}
