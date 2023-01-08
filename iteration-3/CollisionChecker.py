@@ -1,7 +1,8 @@
 #python -m unittest TestCollisionChecker.py
 # cakisma varsa checker failledi yani false dondu
 # cakisma yoksa checker ilerledi yani true dondu
-from typing import List, TypeVar
+from typing import List
+from Student import *
 class CollisionChecker(): 
     flag = 0
     def __init__(self, first_course: List[list], second_course:List[list]):

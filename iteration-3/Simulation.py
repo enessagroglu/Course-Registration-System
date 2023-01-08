@@ -1,5 +1,5 @@
 from CourseController import *
-from StudentController import *
+# from StudentController import *
 from AdvisorController import *
 from Student import *
 from QuotaChecker import *
@@ -8,8 +8,9 @@ from UncompletedCreditChecker import *
 from PrequisiteChecker import *
 from ElectiveCourseChecker import *
 from GraduationProjectChecker import *
+from Advisor import *
 
-class RegisterSystem:
+class Simulation:
     
     courseController = CourseController()
     #studentController = StudentController()
@@ -23,9 +24,11 @@ class RegisterSystem:
     semesterCourses = []
     #students = studentController.createStudent()
     
+    global mcgAdvisor
+    mcgAdvisor = Advisor("Murat", "Ganiz","")
+    
 
-    #courseController.printCourses(courses)
-student1 = Student("enes","sagiroglu","150119725","","","","","","","","","","","","","","")
+student1 = Student("enes","sagiroglu","150119725","","","","","","","","","","","")
 
 def studentMenu():
     menuText = """
@@ -39,6 +42,7 @@ def studentMenu():
     [6] Show Transcript
     [7] Registration Process
     [8] Send selected courses for approval to advisor
+    [9] Show Advisors
 
     [0] Log out
     """
@@ -238,19 +242,23 @@ def studentOptions(student: Student):
         registrationProcess(student)
         studentOptions(student)
     elif option == 8:
-        # SEND TO ADVISOR
+        mcgAdvisor.approve(student)
         studentOptions(student)
+    elif option == 9:
+        for advisor in advisors:
+            print(f"Name:{advisor._name} Surname:{advisor._surname} Email: {advisor._email}")
     elif option == 0:
         login()
 
+def simulation():
+    try:
+        currentUser = login()
+        if type(currentUser) == Student:
+            studentOptions(currentUser)
+        elif type(currentUser) == Advisor:
+            pass
+    except TypeError as tp:
+        print("An unidentified error has occurred, you are being redirected to the login page")
+        login()
 
-try:
-    currentUser = login()
-    if type(currentUser) == Student:
-        studentMenu()
-    elif type(currentUser) == Advisor:
-        pass
-except TypeError as tp:
-    print("An unidentified error has occurred, you are being redirected to the login page")
-    login()
 

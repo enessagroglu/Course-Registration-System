@@ -1,11 +1,5 @@
-from CourseController import *
+from Simulation import *
 
 def main():
-    courseController = CourseController()
-    courses = []
-    courses = courseController.createCourse()
-
-
-    courseController.printCourses(courses)
-
+    simulation()
 main()
