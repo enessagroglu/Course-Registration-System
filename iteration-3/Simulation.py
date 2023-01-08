@@ -127,6 +127,10 @@ def printSemesterCourse(student: Student):
         if (student._semester._semesterNo >= course._semester._semesterNo):
             print(f"Course ID: [{course._courseId}] Course Name: {course._courseCode} {course._name}")
 
+    for course in student._transcript.failedCourses:
+        if course not in student._selectedCourses:
+            print(f"Course ID: [{course._courseId}] Course Name: {course._courseCode} {course._name}")
+
 
 def registrationProcess(student1: Student):
     student = student1
