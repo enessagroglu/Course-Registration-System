@@ -817,7 +817,11 @@
       "courseType": "Elective",
       "courseCurrentStudentNumber": 0,
       "schedule": [
-          {"day":1,"timeStart":"13","timeEnd":"15"}
+        {
+          "day": 1,
+          "timeStart": "13",
+          "timeEnd": "15"
+        }
       ]
     },
     {
