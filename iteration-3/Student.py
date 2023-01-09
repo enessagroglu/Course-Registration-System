@@ -133,11 +133,11 @@ def calculateCumulativeGpa(self):
 
 
     def addNonTakenCourse(self,course: Course):
-    try:
-        if course not in self.nonTakenCourses:
-            self.nonTakenCourses.append(course)
-    except Exception as e:
-        print(e)
+        try:
+            if course not in self.nonTakenCourses:
+                self.nonTakenCourses.append(course)
+        except Exception as e:
+            print(e)
 
 
     def __str__(self):

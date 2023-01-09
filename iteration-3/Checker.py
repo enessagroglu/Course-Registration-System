@@ -12,7 +12,7 @@ class Checker:
         return None
 
     def raise_error(self):
-    try:
-        return "Abstract Error"
-    except Exception as e:
-        print(e)
+        try:
+            return "Abstract Error"
+        except Exception as e:
+            print(e)
