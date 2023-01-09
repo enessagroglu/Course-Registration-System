@@ -63,10 +63,10 @@ def showActiveCourses(student: Student):
 def showPassedCourses(student: Student):
     print(" Past Courses: ")
     count = 1
-    if len(student.transcript.passedCourses) == 0:
+    if len(student._transcript.passedCourses) == 0:
         print("There is no Past Course")
     else:
-        for courses in student.transcript.passedCourses:
+        for courses in student._transcript.passedCourses:
             print(f"[{count}] {courses.courseCode} {courses.name}")
             count +=1
 
@@ -125,11 +125,8 @@ def printSemesterCourse(student: Student):
 
     for course in semesterCourses:
         if (student._semester._semesterNo >= course._semester._semesterNo):
-            print(f"Course ID: [{course._courseId}] Course Name: {course._courseCode} {course._name}")
-
-    for course in student._transcript.failedCourses:
-        if course not in student._selectedCourses:
-            print(f"Course ID: [{course._courseId}] Course Name: {course._courseCode} {course._name}")
+            if course not in student._transcript.passedCourses:
+                print(f"Course ID: [{course._courseId}] Course Name: {course._courseCode} {course._name}")
 
 
 def registrationProcess(student1: Student):
@@ -279,10 +276,12 @@ def studentOptions(student: Student):
             print(f"Name:{advisor._name} Surname:{advisor._surname} Email: {advisor._email}")
         studentOptions(student)
     elif option == 0:
+        semesterCourses.clear()
         simulation()
 
 def simulation():
     try:
+        
         currentUser = login()
         if type(currentUser) == Student:
             createSemesterCourse(currentUser)

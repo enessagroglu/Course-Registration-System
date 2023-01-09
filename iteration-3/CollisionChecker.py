@@ -25,7 +25,7 @@ class CollisionChecker():
                 # 1.dersin schedulunda i. indexteki butun dayleri, 2.dersin schedulunda j. indexteki dayle 
                 # karsilatiriyor gunler cakismisyosa devam zaten.
       
-                if(self.first_course_schedule[i]["day"]!=self.second_course_schedule[j]["day"]):
+                if(int(self.first_course_schedule[i]['day'])!=int(self.second_course_schedule[j]['day'])):
                     print(self.first_course_schedule[i])
                     print(self.second_course_schedule[j])
                     print("cakismiyor")
