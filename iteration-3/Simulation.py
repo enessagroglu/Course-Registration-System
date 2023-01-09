@@ -9,26 +9,61 @@ from PrequisiteChecker import *
 from ElectiveCourseChecker import *
 from GraduationProjectChecker import *
 from Advisor import *
+import logging
+
+# create a logger with the name of the current module
+logger = logging.getLogger(__name__)
+
+# set the logging level to DEBUG
+logger.setLevel(logging.DEBUG)
+
+# create a file handler to log messages to a file
+file_handler = logging.FileHandler('app.log')
+
+# create a logging format
+import logging
+
+logging.basicConfig(filename='app.log', filemode='w', format='%(name)s - %(levelname)s - %(message)s')
+logging.warning('This will get logged to a file')
+
+# add the file handler to the logge
+# r
+logger.addHandler(file_handler)
+
+# you can now log messages using the logger object
+logger.debug('This is a debug message')
+logger.info('This is an info message')
+logger.warning('This is a warning message')
+logger.error('This is an error message')
+logger.critical('This is a critical message')
+
 
 class Simulation:
     
-    courseController = CourseController()
-    #studentController = StudentController()
-    advisorController = AdvisorController()
+    try:
+        courseController = CourseController()
+        #studentController = StudentController()
+        advisorController = AdvisorController()
 
-    global courses
-    global semesterCourses
-    global advisors
-    courses = courseController.createCourse()
-    advisors = advisorController.createAdvisor()
-    semesterCourses = []
-    #students = studentController.createStudent()
-    
-    global mcgAdvisor
-    mcgAdvisor = Advisor("Murat", "Ganiz","")
-    
+        global courses
+        global semesterCourses
+        global advisors
+        courses = courseController.createCourse()
+        advisors = advisorController.createAdvisor()
+        semesterCourses = []
+        #students = studentController.createStudent()
 
-student1 = Student("enes","sagiroglu","150119725","","","","","","","","","","","")
+        global mcgAdvisor
+        mcgAdvisor = Advisor("Murat", "Ganiz","")
+    except Exception as e:
+        print("An error occurred:", e)
+        logger.error(e);
+
+try:
+    student1 = Student("enes","sagiroglu","150119725","","","","","","","","","","","")
+except Exception as e:
+    print("An error occurred:", e)
+
 
 def studentMenu():
     menuText = """
@@ -94,20 +129,29 @@ def showSchedule(student: Student):
 def showFailedCourses(student: Student):
     print(" Failed Courses: ")
     count = 1
-    if len(student.transcript.failedCourses) == 0:
-        print("There is no failed Course")
-    else:
-        for courses in student.transcript.failedCourses:
-            print(f"[{count}] {courses.courseCode} {courses.name}")
-            count +=1
+    try:
+        if len(student.transcript.failedCourses) == 0:
+            print("There is no failed Course")
+        else:
+            for courses in student.transcript.failedCourses:
+                print(f"[{count}] {courses.courseCode} {courses.name}")
+                count +=1
+    except Exception as e:
+        print("An error occurred:", e)
+        logger.error(e)
+
 
 def showTranscript(student: Student):
     print(" Transcript info ")
-    print(f""" 
-    Total given Credits:{student.transcript.totalCredits}
-    GPA: {student._transcript.gpa}
-    Semester: {student._semester}
-    """)
+    try:
+        print(f""" 
+        Total given Credits:{student.transcript.totalCredits}
+        GPA: {student._transcript.gpa}
+        Semester: {student._semester}
+        """)
+    except Exception as e:
+        print("An error occurred:", e)
+        logger.error(e)
 
 def printSemesterCourse(student: Student):
     
@@ -116,7 +160,11 @@ def printSemesterCourse(student: Student):
             if course not in student._transcript.passedCourses:
                 semesterCourses.append(course)
     for course in semesterCourses:
-        print(f"Course ID: [{course._courseId}] Course Name: {course._courseCode} {course._name}")
+        try:
+            print(f"Course ID: [{course._courseId}] Course Name: {course._name} - Credit: {course._credit} - Status: {course._status} - Instructor: {course._instructor}")
+        except Exception as e:
+            print("An error occurred:", e)
+            logger.error(e)
 
 
 
@@ -186,6 +234,7 @@ def registrationProcess(student1: Student):
     except ValueError as ve:
         print(ve)
         registrationProcess(student)
+        logger.error(e)
 
 
 def login():
@@ -213,6 +262,7 @@ def login():
     except ValueError as ve:
         print(ve)
         login()
+        logger.error(e)
     
 
 
@@ -260,5 +310,6 @@ def simulation():
     except TypeError as tp:
         print("An unidentified error has occurred, you are being redirected to the login page")
         login()
+        logger.error(e)
 
 
