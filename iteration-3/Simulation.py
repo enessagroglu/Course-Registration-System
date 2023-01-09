@@ -11,31 +11,19 @@ from GraduationProjectChecker import *
 from Advisor import *
 import logging
 
-# create a logger with the name of the current module
 logger = logging.getLogger(__name__)
 
-# set the logging level to DEBUG
 logger.setLevel(logging.DEBUG)
 
-# create a file handler to log messages to a file
 file_handler = logging.FileHandler('app.log')
 
-# create a logging format
 import logging
 
 logging.basicConfig(filename='app.log', filemode='w', format='%(name)s - %(levelname)s - %(message)s')
 logging.warning('This will get logged to a file')
 
-# add the file handler to the logge
-# r
 logger.addHandler(file_handler)
 
-# you can now log messages using the logger object
-logger.debug('This is a debug message')
-logger.info('This is an info message')
-logger.warning('This is a warning message')
-logger.error('This is an error message')
-logger.critical('This is a critical message')
 
 
 class Simulation:
