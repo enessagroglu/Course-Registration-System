@@ -30,6 +30,10 @@ class Advisor(Person):
         else:
             for course in student._selectedCourses:
                 student._activeCourses.append(course)
+                course.courseCurrentStudentNumber += 1
+            for course in student._activeCourses:
+                student._selectedCourses.remove(course)
+
             print("Your Selected Courses have been approved")
             return True
     
